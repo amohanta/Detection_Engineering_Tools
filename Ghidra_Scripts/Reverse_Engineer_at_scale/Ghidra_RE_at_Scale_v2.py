@@ -18,9 +18,19 @@ SampleFile_list = os.listdir(SampleDir_path)
 for SampleFile_Name in SampleFile_list:
 	#SampleFile_Name = "Sample_6.1.exe"
 	print "analysis_file => " + str(SampleFile_Name)
-	ScriptName = "list_functions.py" #script name
 	Sample_abs_path = SampleDir_path + str(SampleFile_Name)
+	
+	ScriptName = "list_functions.py" #script name
 	command = Headless_bat_path + " " + Project_Dir + " " + Project_name + " -import " + Sample_abs_path + " -scriptPath " + ScriptDir + " -postScript " + ScriptName + " -overwrite " + " >> " + "Logs\\" +str(SampleFile_Name) + "_" + ScriptName + "_log.txt"
+	
+
+	
 
 	print command
 	os.system(command)
+	
+	#run another script
+	#ScriptName = "list_functions.py" #script name
+	#command = Headless_bat_path + " " + Project_Dir + " " + Project_name + " -import " + Sample_abs_path + " -scriptPath " + ScriptDir + " -postScript " + ScriptName + " -overwrite " + " >> " + "Logs\\" +str(SampleFile_Name) + "_" + ScriptName + "_log.txt"
+	#print command
+	#os.system(command)
