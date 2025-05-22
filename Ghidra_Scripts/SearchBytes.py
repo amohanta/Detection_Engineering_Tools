@@ -1,7 +1,5 @@
-#@author 
-#@category Search
-#@menupath Search.Byte Pattern Wildcard
-#@toolbar 
+#@author: abhijit mohanta 
+
 
 from ghidra.program.model.mem import MemoryAccessException
 from ghidra.util.task import ConsoleTaskMonitor
