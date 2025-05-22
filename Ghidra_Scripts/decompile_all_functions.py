@@ -1,3 +1,5 @@
+#written by Abhijit mohanta and chatgpt
+
 import os
 import ghidra.app.decompiler.DecompInterface as DecompInterface
 from ghidra.util.task import ConsoleTaskMonitor
