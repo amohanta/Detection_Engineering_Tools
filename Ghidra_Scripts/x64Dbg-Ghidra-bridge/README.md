@@ -9,7 +9,12 @@ This repository contains two lightweight scripts that create a **live synchroniz
 The system includes:
 
 1. **`x64dbg-Sync_EIP_sender.py`**\
-   A Python script designed to run inside **x64dbg** using the [`x64dbgpython`](https://github.com/ElvisBlue/x64dbgpython)[ plugin](https://github.com/ElvisBlue/x64dbgpython). It continuously reads the current instruction pointer (EIP/RIP) of the debugged process and sends it via TCP to Ghidra every second.
+   A Python script designed to run inside **x64dbg** using the [`x64dbgpython`](https://github.com/ElvisBlue/x64dbgpython)[ plugin](https://github.com/ElvisBlue/x64dbgpython). It continuously reads the current instruction pointer (EIP/RIP) of the debugged process and sends it via TCP to Ghidra every second. 
+
+In order to install configure **x64dbgpython**
+-download the plugins(python 3.8 version and 3.10 version and again for these one for x32 and one for x64). Extract and put these plugins in appropriate x64dbg Directories(x32 and x64). 
+-Install python 3.8 32 bit and 64 bit version and add the path of these python folders to PATH environment variable. 
+-Also use the PATH plgin: https://github.com/ElvisBlue/PATH
 
 2. **`Ghidra_Sync_Listener.py`**\
    A Ghidra script that acts as a TCP listener. Upon receiving addresses from x64dbg, it uses Ghidra’s `GoToService` to automatically navigate to those addresses in the disassembly or decompiler view.
