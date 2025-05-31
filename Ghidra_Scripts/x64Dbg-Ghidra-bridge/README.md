@@ -55,7 +55,7 @@ After installing the plugin, you can see it in the **Plugins** menu as "**x32Dbg
 
 - The x64dbg script sends the current instruction pointer (EIP/RIP) to Ghidra every second.  
 - The Ghidra listener receives it and auto-navigates to the corresponding address.  
-- This provides live sync between dynamic execution (in x64dbg) and static analysis (in Ghidra).
+- This provides live sync between dynamic execution (in x64dbg) and static analysis (in Ghidra). See the video below.
 
 ---
 
