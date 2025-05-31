@@ -33,7 +33,7 @@ The system includes:
 
 
 After installing the plugin, you can see it in the **Plugins** menu as "**x32Dbg Python**".  
-  ** -** Click on "**x32Dbg Python**" and select the "**Run Script**" option. Browse to your script x64dbg-Sync_EIP_sender.py and execute it. 
+  **-** Click on "**x32Dbg Python**" and select the "**Run Script**" option. Browse to your script x64dbg-Sync_EIP_sender.py and execute it. 
 
 2. **`Ghidra_Sync_Listener.py`**  
    A Ghidra script that acts as a TCP listener. Upon receiving addresses from x64dbg, it uses Ghidra’s `GoToService` to automatically navigate to those addresses in the disassembly or decompiler view.
