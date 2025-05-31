@@ -20,7 +20,7 @@ The system includes:
 
 - **x64dbg** with the **[x64dbgpython](https://github.com/ElvisBlue/x64dbgpython)**[ plugin](https://github.com/ElvisBlue/x64dbgpython)
 - **Ghidra** (any modern version)
-- Python 2.7 (required by Ghidra for scripting)
+- Python 3.8 (required by x64dbgpython)
 - Localhost TCP communication (default: `127.0.0.1:2222`)
 
 ---
