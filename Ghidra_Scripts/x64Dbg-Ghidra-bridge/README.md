@@ -66,3 +66,5 @@ The system includes:
 © 2025 Abhijit Mohanta. All rights reserved.
 This project is provided for educational and research use only.
 ```
+
+![x64Dbg-Ghidra-bridge Demo](https://github.com/amohanta/Detection_Engineering_Tools/raw/main/Ghidra_Scripts/x64Dbg-Ghidra-bridge/images/bridge.gif)
