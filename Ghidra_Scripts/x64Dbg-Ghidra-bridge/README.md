@@ -92,5 +92,5 @@ This project is provided for educational and research use only.
 ---
 ![x64Dbg-Ghidra-bridge Demo-GUI](https://github.com/amohanta/Detection_Engineering_Tools/edit/main/Ghidra_Scripts/x64Dbg-Ghidra-bridge/images/ghidra-bridge_UI.gif)
 
-![x64Dbg-Ghidra-bridge Demo](https://github.com/amohanta/Detection_Engineering_Tools/raw/main/Ghidra_Scripts/x64Dbg-Ghidra-bridge/images/bridge.gif)
+
 
