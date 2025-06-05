@@ -13,7 +13,7 @@ The system includes:
 
    #### Installation steps for x64dbgpython plugin:
    1. **Download the plugins**  
-      - Download the plugins for Python 3.8 and 3.10 versions.  
+      - Download the plugins for Python 3.8 (If you use 3.10 version, you need to install 3.10.)  
       - For each Python version, download both the x32 and x64 plugin versions.  
 
    2. **Extract and place plugins**  
