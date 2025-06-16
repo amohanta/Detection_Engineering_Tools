@@ -5,6 +5,18 @@
 A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logging for **32-bit native Windows executables**, designed especially for malware analysts, reverse engineers, and blue teamers. Unlike sandbox-based tools, this is a **standalone command-line utility** that captures the actual behavior of malware in real execution environments.
 
 ---
+## 🌟 Unique Features
+
+- ✅ **Standalone command-line tool** — No sandbox setup needed
+- ✅ **Captures API calls from malware-created processes**  
+  via `CreateProcessA`, `CreateProcessW`
+- ✅ **Captures API calls from injected processes**  
+  via `OpenProcess` (e.g., process hollowing, DLL injection)
+- ✅ **Goes beyond conventional API logging** 
+     - ✅ **Prevents malware from terminating the process** — keeps it alive for extended inspection 
+     - ✅ **Preserves memory freed by `VirtualFree()`** — useful for capturing unpacked/decrypted code
+
+---
 
 ## 🚀 How to Use
 
@@ -85,20 +97,7 @@ Each log contains timestamped API calls with parameter details.
 
 ---
 
-## 🌟 Unique Features
 
-- ✅ **Standalone command-line tool** — No sandbox setup needed
-- ✅ **Captures API calls from malware-created processes**  
-  via `CreateProcessA`, `CreateProcessW`
-- ✅ **Captures API calls from injected processes**  
-  via `OpenProcess` (e.g., process hollowing, DLL injection)
-- 
--
-- ✅ **Goes beyond conventional logging** 
-     - ✅ **Prevents malware from terminating the process** — keeps it alive for extended inspection 
-     - ✅ **Preserves memory freed by `VirtualFree()`** — useful for capturing unpacked/decrypted code
-
----
 
 ## ⚠️ Limitations
 
