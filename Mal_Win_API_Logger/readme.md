@@ -15,7 +15,7 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
 - ✅ **Goes beyond conventional API logging** 
      - ✅ **Prevents malware from terminating the process** — keeps it alive for extended inspection 
      - ✅ **Preserves memory freed by `VirtualFree()`** — useful for capturing unpacked/decrypted code
-     - ✅ **Logs return address** - You can check in Debugger the address from where API was called. Make sure DLL can move is disabled in exe
+     - ✅ **Logs return address** - You can check in Debugger the address from where API was called. Useful for Reverse Engineers. Make sure DLL can move is disabled in exe
 
 ---
 
