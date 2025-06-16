@@ -131,9 +131,6 @@ Each log contains timestamped API calls with parameter details.
 ## 🧭 Future Plans
 
 - [ ] 64-bit support
-- [ ] Rich log parsing and viewer UI
-- [ ] YARA or signature-based API filters
-- [ ] Optional memory dump on key events
 
 ---
 
