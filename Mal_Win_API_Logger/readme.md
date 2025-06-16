@@ -1,4 +1,4 @@
-# 🛡️ Win32 API Logger
+# 🛡️Malware Win32 API Logger (MalWinAPILogger)
 
 A lightweight **Win32 API Logger** built using **Microsoft Detours**. This tool enables real-time dynamic API logging for **32-bit native Windows executables**, designed especially for malware analysts, reverse engineers, and blue teamers. Unlike sandbox-based tools, this is a **standalone command-line utility** that captures the actual behavior of malware in real execution environments.
 
