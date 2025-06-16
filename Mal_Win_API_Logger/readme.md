@@ -131,6 +131,7 @@ Each log contains timestamped API calls with parameter details.
 ## 🧭 Future Plans
 
 - [ ] 64-bit support
+- [ ] - Support More AI's
 
 ---
 
