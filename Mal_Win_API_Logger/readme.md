@@ -83,6 +83,9 @@ Each log contains timestamped API calls with parameter details.
 - `CreateMutexW`
 - `VirtualAlloc`
 - `VirtualFree`
+- `LoadLibraryA`
+- `LoadLibraryW`
+- `GetProcAddress`
 
 ### 🛠️ `advapi32.dll`
 - `RegCreateKeyExA`
