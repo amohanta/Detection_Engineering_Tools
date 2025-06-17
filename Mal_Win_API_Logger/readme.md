@@ -87,7 +87,7 @@ Each log contains timestamped API calls with parameter details.
 - `LoadLibraryA`
 - `LoadLibraryW`
 - `GetProcAddress`
-- 
+- `VirtualProtect`
 
 ### 🛠️ `advapi32.dll`
 - `RegCreateKeyExA`
