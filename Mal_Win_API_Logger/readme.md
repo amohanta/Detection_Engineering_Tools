@@ -100,6 +100,9 @@ Each log contains timestamped API calls with parameter details.
 - `InternetOpenW`
 - `InternetConnectA`
 - `InternetConnectW`
+- `HttpOpenRequestA`
+- `HttpOpenRequestW`
+- `InternetReadFile`
 
 ---
 
@@ -136,7 +139,7 @@ Each log contains timestamped API calls with parameter details.
 ## 🧭 Future Plans
 
 - [ ] 64-bit support
-- [ ] - Support More AI's
+- [ ] - Support More API's - Nt API's
 
 ---
 
