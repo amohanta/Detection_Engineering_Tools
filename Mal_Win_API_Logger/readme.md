@@ -88,6 +88,14 @@ Each log contains timestamped API calls with parameter details.
 - `LoadLibraryW`
 - `GetProcAddress`
 - `VirtualProtect`
+- `FindFirstFileW`
+- `FindNextFileA`
+- `FindNextFileW`
+- `CreateDirectoryA`
+- `CreateDirectoryW`
+- `CloseHandle`
+- `ReadFile`
+
 
 ### 🛠️ `advapi32.dll`
 - `RegCreateKeyExA`
