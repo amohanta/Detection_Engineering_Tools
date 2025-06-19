@@ -129,7 +129,7 @@ Each log contains timestamped API calls with parameter details.
 
 ```
 ├── Mal_Win_API_Logger.exe     → Injector & launcher
-├── APIHook.dll                → Detours-based API logger DLL
+├── APIHook.dll                → API logger DLL
 ├── C:\HOOKDLL                 → DLL dropped here during run
 └── C:\DLLLogs                 → Log files generated here
 ```
