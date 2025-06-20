@@ -33,7 +33,7 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
    ```
 
    This will:
-   - Copy `APIHook.dll` into `C:\HOOKDLL`
+   - Copy `APIHook dll` into `C:\HOOKDLL`
    - Launch the target executable with injected DLL
    - Begin logging API calls to `C:\DLLLogs`. Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files
 
