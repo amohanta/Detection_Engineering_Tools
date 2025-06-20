@@ -67,52 +67,134 @@ Each log contains timestamped API calls with parameter details.
 
 ---
 
-## 🔧 Supported API Functions
+🔧 Supported API Functions
+📁 kernel32.dll
 
-### 📁 `kernel32.dll`
-- `ExitProcess`
-- `CreateProcessA`
-- `CreateProcessW`
-- `OpenProcess`
-- `VirtualAllocEx`
-- `WriteProcessMemory`
-- `CreateRemoteThread`
-- `CreateFileA`
-- `CreateFileW`
-- `WriteFile`
-- `CreateMutexA`
-- `CreateMutexW`
-- `VirtualAlloc`
-- `VirtualFree`
-- `LoadLibraryA`
-- `LoadLibraryW`
-- `GetProcAddress`
-- `VirtualProtect`
-- `FindFirstFileW`
-- `FindNextFileA`
-- `FindNextFileW`
-- `CreateDirectoryA`
-- `CreateDirectoryW`
-- `CloseHandle`
-- `ReadFile`
+    ExitProcess
 
+    CreateProcessA
 
-### 🛠️ `advapi32.dll`
-- `RegCreateKeyExA`
-- `RegCreateKeyExW`
-- `RegSetValueExA`
-- `RegSetValueExW`
+    CreateProcessW
 
-### 🌐 `wininet.dll`
-- `InternetOpenA`
-- `InternetOpenW`
-- `InternetConnectA`
-- `InternetConnectW`
-- `HttpOpenRequestA`
-- `HttpOpenRequestW`
-- `InternetReadFile`
+    WinExec
 
----
+    OpenProcess
+
+    VirtualAlloc
+
+    VirtualAllocEx
+
+    VirtualFree
+
+    WriteProcessMemory
+
+    CreateRemoteThread
+
+    CreateFileA
+
+    CreateFileW
+
+    WriteFile
+
+    CreateMutexA
+
+    CreateMutexW
+
+    CreateDirectoryA
+
+    CreateDirectoryW
+
+    FindFirstFileA
+
+    FindFirstFileW
+
+    FindNextFileA
+
+    FindNextFileW
+
+    CloseHandle
+
+    ReadFile
+
+    GetProcAddress
+
+    LoadLibraryA
+
+    LoadLibraryW
+
+    VirtualProtect
+
+    CreateToolhelp32Snapshot
+
+    Process32FirstW
+
+    Process32NextW
+
+    Module32FirstW
+
+    Module32NextW
+
+📁 advapi32.dll
+
+    RegCreateKeyExA
+
+    RegCreateKeyExW
+
+    RegSetValueExA
+
+    RegSetValueExW
+
+    OpenSCManagerA
+
+    OpenSCManagerW
+
+    CreateServiceA
+
+    CreateServiceW
+
+    StartServiceA
+
+    StartServiceW
+
+    DeleteService
+
+    OpenProcessToken
+
+    DuplicateTokenEx
+
+📁 ws2_32.dll
+
+    WSAStartup
+
+📁 winhttp.dll
+
+    WinHttpOpen
+
+    WinHttpConnect
+
+    WinHttpOpenRequest
+
+    WinHttpSendRequest
+
+📁 wininet.dll
+
+    InternetOpenA
+
+    InternetOpenW
+
+    InternetConnectA
+
+    InternetConnectW
+
+    HttpOpenRequestA
+
+    HttpOpenRequestW
+
+    InternetReadFile
+
+📁 ntdll.dll
+
+    ZwTerminateProcess
 
 
 
