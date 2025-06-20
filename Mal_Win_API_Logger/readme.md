@@ -184,3 +184,10 @@ Each log contains timestamped API calls with parameter details.
 ---
 
 > ⚠️ **Disclaimer:** This tool is strictly intended for **educational and malware research purposes only**. Use responsibly and at your own risk.
+> ## 📄 License and Copyright
+
+© Abhijit Mohanta
+
+This work is protected under copyright. You may view, use, and share the contents for **educational and personal purposes only**.
+
+❌ **Commercial use is strictly prohibited** without explicit permission from the author.
