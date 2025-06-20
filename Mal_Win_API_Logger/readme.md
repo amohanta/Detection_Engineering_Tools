@@ -68,6 +68,7 @@ Each log contains timestamped API calls with parameter details.
 ---
 
 🔧 Supported API Functions
+
 📁 **kernel32.dll**
 - `ExitProcess`
 - `CreateProcessA`
