@@ -1,4 +1,4 @@
-![API Logger Screenshot](images/api_log.png)
+![API Logger Screenshot](images/Logo.png)
 
 # 🛡️Malware Win32 API Logger (MalWinAPILogger)
 
