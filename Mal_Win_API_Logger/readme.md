@@ -17,7 +17,7 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
      - ✅ **Preserves memory freed by `VirtualFree()`** — useful for capturing unpacked/decrypted code
  - ✅ **Logs return address** - You can check in Debugger the address(see the previous instruction) from where API was called. Useful for **Reverse Engineers**. Make sure DLL can move is disabled in exe
 - ✅ **Sleep Acceleration - nullifies Sleep() Call API's- Malwares use for Anti-Sandboxing**
-  ✅ **Dumps Crypto API Key(CryptExportKey, CryptImportKey)BLOBs which can be used in analying Ransomware**
+  ✅ **Dumps Crypto API Key(CryptExportKey, CryptImportKey)BLOBs which can be used in analying Ransomware ** 
   ✅ **dumps memory (work in progress) (size 40 KB) from memory copy api's WriteProcessMemory, memcpy to disk useful in analying runtime generated code, shellcodes etc**  
 - ✅ **Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files**   
 
@@ -39,7 +39,7 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
    - Copy `APIHook_<x86/x64> dll` into `C:\HOOKDLL`
    - Launch the target executable with injected DLL
    - Begin logging API calls to `C:\DLLLogs`. Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files
-
+   - memory dumps and Crypto API BLOB's dumped to `C:\MalMemDumps`
 ---
 
 ## 📄 Log Format
@@ -187,6 +187,9 @@ Each log contains timestamped API calls with parameter details.
 ├── APIHook_x64.dll                → API logger DLL 64 bit
 ├── C:\HOOKDLL                 → DLL dropped here during run
 └── C:\DLLLogs                 → Log files generated here
+└── C:\MalMemDumps                 → memory dumps and Crypto API BLOB dumped here
+
+
 ```
 
 ---
