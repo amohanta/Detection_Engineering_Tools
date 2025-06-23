@@ -2,7 +2,7 @@
 
 # 🛡️Malware Win32 API Logger (MalWinAPILogger)
 
-A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logging for **32-bit native Windows executables**, designed especially for malware analysts, reverse engineers, and blue teamers. Unlike sandbox-based tools, this is a **standalone command-line utility** that captures the actual behavior of malware in real execution environments.
+A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logging for **32 bit and 64 bit native Windows executables**, designed especially for malware analysts, reverse engineers, and blue teamers. Unlike sandbox-based tools, this is a **standalone command-line utility** that captures the actual API's called by malware which can be an input from Dynamic Analysis and **Reverse Engineering**.
 
 ---
 ## 🌟 Unique Features
