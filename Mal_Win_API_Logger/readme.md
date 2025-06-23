@@ -16,7 +16,9 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
      - ✅ **Prevents malware from terminating the process** — keeps it alive for extended inspection 
      - ✅ **Preserves memory freed by `VirtualFree()`** — useful for capturing unpacked/decrypted code
  - ✅ **Logs return address** - You can check in Debugger the address(see the previous instruction) from where API was called. Useful for **Reverse Engineers**. Make sure DLL can move is disabled in exe
-- ✅ **Sleep Acceleration - nullifies Sleep() Call API's- Malwares use for Anti-Sandboxing**  
+- ✅ **Sleep Acceleration - nullifies Sleep() Call API's- Malwares use for Anti-Sandboxing**
+  ✅ **Dumps Crypto API Key(CryptExportKey, CryptImportKey)BLOBs which can be used in analying Ransomware**
+  ✅ **dumps memory(size 40 KB) from memory copy api's WriteProcessMemory, memcpy to disk useful in analying runtime generated code, shellcodes etc**  
 - ✅ **Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files**   
 
 ---
@@ -25,16 +27,16 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
 
 1. **Place Files Together**  
    Ensure the following files are in the same directory:
-   - `Mal_Win_API_Logger.exe`
-   - `APIHook.dll`
+   - `Mal_Win_API_Logger_<x86/x64>.exe`
+   - `APIHook_<x86/x64>.dll`
 
 2. **Run from Administrator Command Prompt**
    ```bash
-   Mal_Win_API_Logger.exe <exe_name>
+   Mal_Win_API_Logger_<x86/x64>.exe <exe_name>
    ```
 
    This will:
-   - Copy `APIHook dll` into `C:\HOOKDLL`
+   - Copy `APIHook_<x86/x64> dll` into `C:\HOOKDLL`
    - Launch the target executable with injected DLL
    - Begin logging API calls to `C:\DLLLogs`. Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files
 
@@ -145,15 +147,25 @@ Each log contains timestamped API calls with parameter details.
 - `HttpOpenRequestW`
 - `InternetReadFile`
 
+
 ---
 
 📁 **ntdll.dll**
 - `ZwTerminateProcess`
-## ⚠️ Limitations
+- `RtlMoveMemory`
+- `RtlCopyMemory`
 
-- ❌ Supports **only 32-bit native executables**
+---
+
+📁 **msvcrt.dll**
+- `memcpy`
+- `memmove`
+- `memset`
+- `memcmp`
+  
+## ⚠️ Limitations
 - ❌ Does **not support .NET/managed binaries**
-- ⚠️ Requires **Administrator privileges**
+
 
 ---
 
