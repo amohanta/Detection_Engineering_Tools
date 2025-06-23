@@ -181,8 +181,10 @@ Each log contains timestamped API calls with parameter details.
 ## 📁 Folder Structure
 
 ```
-├── Mal_Win_API_Logger.exe     → Injector & launcher
-├── APIHook.dll                → API logger DLL
+├── Mal_Win_API_Logger_x86.exe     → Injector & launcher 32 bit
+├── APIHook_x86.dll                → API logger DLL 32 bit
+├── Mal_Win_API_Logger_x64.exe     → Injector & launcher 64 bit
+├── APIHook_x64.dll                → API logger DLL 64 bit
 ├── C:\HOOKDLL                 → DLL dropped here during run
 └── C:\DLLLogs                 → Log files generated here
 ```
