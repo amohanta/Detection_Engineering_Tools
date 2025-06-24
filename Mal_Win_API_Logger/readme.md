@@ -68,6 +68,9 @@ mini.exe_PID-9252_TimeStamp-20250616_133024.txt
 
 Each log contains timestamped API calls with parameter details.
 
+**Tutorials:**
+- Basic Usage - https://www.youtube.com/watch?v=jh3T1y5C42Q&t=14s
+- Unpacking Warzone RAT - https://www.youtube.com/watch?v=xlIZUpjuAjo
 ---
 
 🔧 Supported API Functions
