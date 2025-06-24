@@ -4,7 +4,7 @@
 
 A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logging for **32 bit and 64 bit native Windows executables**, designed especially for malware analysts, reverse engineers, and blue teamers. Unlike sandbox-based tools, this is a **standalone command-line utility** that captures the actual API's called by malware which can be an input from Dynamic Analysis and **Reverse Engineering**.
 
-**##**Tutorials:
+## Tutorials:
 - Basic Usage - https://www.youtube.com/watch?v=jh3T1y5C42Q&t=14s
 - Unpacking Warzone RAT - https://www.youtube.com/watch?v=xlIZUpjuAjo
 ---
