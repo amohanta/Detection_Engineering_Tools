@@ -185,9 +185,9 @@ Each log contains timestamped API calls with parameter details.
 ├── APIHook_x86.dll                → API logger DLL 32 bit
 ├── Mal_Win_API_Logger_x64.exe     → Injector & launcher 64 bit
 ├── APIHook_x64.dll                → API logger DLL 64 bit
-├── C:\HOOKDLL                 → DLL dropped here during run
-└── C:\DLLLogs                 → Log files generated here
-└── C:\MalMemDumps                 → memory dumps and Crypto API BLOB dumped here
+├── C:\HOOKDLL                     → DLL dropped here during run
+├── C:\DLLLogs                     → Log files generated here
+├── C:\MalMemDumps                 → memory dumps and Crypto API BLOB dumped here
 
 
 ```
