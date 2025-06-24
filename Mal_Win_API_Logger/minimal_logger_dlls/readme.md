@@ -1,6 +1,6 @@
 🛠️ LummaStealer Analysis Support
 
-This tool is especially useful when analyzing LummaStealer, a known info-stealer that frequently invokes API calls like Sleep and CreateMutex. These behaviors are often used to:
+Thiese DLL's is especially useful when analyzing LummaStealer, which frequently invokes API calls like Sleep and CreateMutex. These behaviors are often used to:
 
     Evade sandbox detection
 
