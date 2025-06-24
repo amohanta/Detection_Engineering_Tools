@@ -21,6 +21,9 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
 - ✅ **dumps memory  (greater than size 25 KB) which is used by memory data movement API's , memcpy to disk useful in analying runtime generated code, shellcodes etc**  
 - ✅ **Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files**   
 
+**Tutorials:**
+- Basic Usage - https://www.youtube.com/watch?v=jh3T1y5C42Q&t=14s
+- Unpacking Warzone RAT - https://www.youtube.com/watch?v=xlIZUpjuAjo
 ---
 
 ## 🚀 How to Use
@@ -68,9 +71,7 @@ mini.exe_PID-9252_TimeStamp-20250616_133024.txt
 
 Each log contains timestamped API calls with parameter details.
 
-**Tutorials:**
-- Basic Usage - https://www.youtube.com/watch?v=jh3T1y5C42Q&t=14s
-- Unpacking Warzone RAT - https://www.youtube.com/watch?v=xlIZUpjuAjo
+
 ---
 
 🔧 Supported API Functions
