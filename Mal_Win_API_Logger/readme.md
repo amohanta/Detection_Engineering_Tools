@@ -20,11 +20,11 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
      - ✅ **Preserves memory freed by `VirtualFree()`** — useful for capturing unpacked/decrypted code
  - ✅ **Logs return address** - You can check in Debugger the address(see the previous instruction) from where API was called. Useful for **Reverse Engineers**. Make sure DLL can move is disabled in exe
 - ✅ **Sleep Acceleration - nullifies Sleep() Call API's- Malwares use for Anti-Sandboxing**
-- ✅ **Dumps Crypto API Key(CryptExportKey, CryptImportKey)BLOBs which can be used in analying Ransomware ** 
+- ✅ **Dumps Crypto API Key (`CryptExportKey`, `CryptImportKey`) BLOBs which can be used in analyzing Ransomware**
 - ✅ **dumps memory  (greater than size 25 KB) which is used by memory data movement API's , memcpy to disk useful in analying runtime generated code, shellcodes etc**  
 - ✅ **Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files**
-- ✅** Can execute malicious DLL as well: **
--       ✅ ** Mal_Win_API_Logger_x64/x86.exe C:\windows\SysWOW64/System32\\rundll32.exe dllname,exportname**
+- ✅**Can execute malicious DLL as well:**
+  - ✅ **Mal_Win_API_Logger_x64/x86.exe C:\windows\SysWOW64/System32\\rundll32.exe dllname,exportname**
 
 
 ---
