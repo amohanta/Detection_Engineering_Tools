@@ -39,6 +39,7 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
 2. **Run from Administrator Command Prompt**
    ```bash
    Mal_Win_API_Logger_<x86/x64>.exe <exe_name>
+   Mal_Win_API_Logger_<x86/x64>.exe C:\windows\<SysWOW64/System32>\\rundll32.exe dllname,exportname
    ```
 
    This will:
