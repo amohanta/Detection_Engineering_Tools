@@ -22,7 +22,9 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
 - ✅ **Sleep Acceleration - nullifies Sleep() Call API's- Malwares use for Anti-Sandboxing**
 - ✅ **Dumps Crypto API Key(CryptExportKey, CryptImportKey)BLOBs which can be used in analying Ransomware ** 
 - ✅ **dumps memory  (greater than size 25 KB) which is used by memory data movement API's , memcpy to disk useful in analying runtime generated code, shellcodes etc**  
-- ✅ **Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files**   
+- ✅ **Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files**
+- ✅** Can execute malicious DLL as well: **
+-       ✅ ** Mal_Win_API_Logger_x64/x86.exe C:\windows\SysWOW64/System32\\rundll32.exe dllname,exportname**
 
 
 ---
