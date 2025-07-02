@@ -203,8 +203,6 @@ Each log contains timestamped API calls with parameter details.
 ---
 
 ## 🧭 Future Plans
-
-- [ ] 64-bit support
 - [ ] - Support More API's - Nt API's
 
 ---
