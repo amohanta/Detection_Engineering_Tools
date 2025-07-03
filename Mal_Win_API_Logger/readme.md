@@ -25,6 +25,8 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
 - ✅ **Logs saved with .OpenWithNotepad extension to Prevent Ransomware from encrypting log files**
 - ✅**Can execute malicious DLL as well:**
   - ✅ **Mal_Win_API_Logger_<x86/x64>.exe C:\windows\<SysWOW64/System32>\rundll32.exe dllname,exportname**
+- ✅**Hides following process from malware: Thrawts malware which look for VM check and tools check**
+  - vmtoolsd.exe, vmwaretray.exe, vmwareuser.exe, vmacthlp.exe, vboxservice.exe, vboxtray.exe, wireshark.exe, fiddler.exe, ollydbg.exe, x64dbg.exe, x32dbg.exe, vm3dservice.exe, idag.exe, idaw.exe, idaq.exe, idaq64.exe, procmon.exe, procexp.exe, procexp64.exe, procexp64.exe, dumpcap.exe, tcpview.exe, powershell.exe, cmd.exe, processhacker.exe, autoruns.exe, peid.exe, resourcehacker.exe, devenv.exe, windbg.exe, dnspy.exe, reshacker.exe, cheatengine.exe, filemon.exe, regmon.exe   
 
 
 ---
