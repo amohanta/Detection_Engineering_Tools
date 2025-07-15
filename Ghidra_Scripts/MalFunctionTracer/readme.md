@@ -1,10 +1,10 @@
-# MalUserFunctionTracer
+# MalFunctionTracer
 **Demo: https://youtu.be/WdxvBd83Ehc**
 ## 🚀 Trace User-Defined Functions in Malware — Simplified Dynamic Code Flow Mapping
 
-While traditional tools log API calls, real malicious behavior often hides within user-defined functions. Reverse engineers need tools that expose **which user-defined functions actually execute at runtime**, helping reconstruct a malware's real logic.
+While traditional tools log API calls, it's hard to trace user-defined functions. Reverse engineers need tools that expose **which user-defined functions actually execute at runtime**, helping reconstruct a malware's real logic.
 
-**MalUserFunctionTracer** bridges that gap, without relying on complex instrumentation frameworks like Intel PIN or DynamoRIO.
+**MalTracer** bridges that gap, without relying on complex instrumentation frameworks like Intel PIN or DynamoRIO.
 
 ---
 
@@ -21,7 +21,7 @@ While traditional tools log API calls, real malicious behavior often hides withi
 
 ## 💡 Why This Matters
 
-- Trace **execution flow** beyond simple API calls.
+- Trace **execution flow** and shows which user defined functions were called at runtime
 - Requires **no complex setup** – leverages existing tools (Ghidra + x64dbg).
 - Focus directly on malware’s **core logic**.
 
@@ -37,7 +37,7 @@ While traditional tools log API calls, real malicious behavior often hides withi
 
 3. **Dynamic Phase (x64dbg):**  
    - Load the target binary in x64dbg.
-   - Run the generated x64dbg script (`File > Run Script`).
+   - Run the generated x64dbg script (`Script Windows -> Load Script -> Paste -> run`).
    - As the malware executes, x64dbg logs each function entry, showing actual code flow.
 
 ---
@@ -51,8 +51,7 @@ While traditional tools log API calls, real malicious behavior often hides withi
 
 ## 📂 Files
 
-- `MalUserFunctionTracer.java` (or `.py` depending on your script type):  
-  The Ghidra script that generates the x64dbg script.
+- `MaFunctionTracer.py -  The Ghidra script that generates the x64dbg script.
 
 - `generated_trace_script.txt`:  
   Example of an x64dbg script produced by the tool.
@@ -79,7 +78,7 @@ I'll soon release:
 
 ## 🚀 Stay Tuned!
 
-Simplify your dynamic malware analysis with **MalUserFunctionTracer**.
+Simplify your dynamic malware analysis with **MalFunctionTracer**.
 
 ---
 
