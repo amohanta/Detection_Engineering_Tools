@@ -21,22 +21,21 @@ While traditional tools log API calls, real malicious behavior often hides withi
 
 ## 💡 Why This Matters
 
-- Trace **real execution flow** beyond simple API calls.
-- Map **runtime-generated or unpacked code**.
-- Build a **functional map** of malware binaries.
+- Trace **execution flow** beyond simple API calls.
 - Requires **no complex setup** – leverages existing tools (Ghidra + x64dbg).
 - Focus directly on malware’s **core logic**.
 
 ---
 
 ## 📚 Workflow Overview
-
-1. **Static Phase (Ghidra):**  
+- Make sure that the **"DLL can Move"**, in optional Header of PE file is disabled
+- 
+1. **Static Phase (Ghidra):**
    - Load the malware sample in Ghidra.
    - Run the provided Ghidra script.
    - Script will generate an x64dbg `.txt` script file with breakpoints on all user-defined functions.
 
-2. **Dynamic Phase (x64dbg):**  
+3. **Dynamic Phase (x64dbg):**  
    - Load the target binary in x64dbg.
    - Run the generated x64dbg script (`File > Run Script`).
    - As the malware executes, x64dbg logs each function entry, showing actual code flow.
