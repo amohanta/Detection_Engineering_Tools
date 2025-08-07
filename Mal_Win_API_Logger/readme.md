@@ -7,6 +7,7 @@ A lightweight **Win32 API Logger** .This tool enables real-time dynamic API logg
 ## Tutorials:
 - Basic Usage - https://www.youtube.com/watch?v=jh3T1y5C42Q&t=14s
 - Unpacking Warzone RAT - https://www.youtube.com/watch?v=xlIZUpjuAjo
+- DLL analysis : https://www.youtube.com/watch?v=KlqnpfZdB3U
 ---
 ## 🌟 Unique Features
 
