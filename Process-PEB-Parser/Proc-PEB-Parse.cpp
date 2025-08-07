@@ -2,34 +2,36 @@
 #include <stdio.h>
 #include <tlhelp32.h>
 
-// Structures
-
+// Enable SeDebugPrivilege to read protected processes
 bool enableDebugPriv()
 {
     HANDLE hToken;
     LUID sedebugnameValue;
     TOKEN_PRIVILEGES tkp;
 
-    if (!OpenProcessToken(GetCurrentProcess(),
-        TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken)) {
+    if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken)) {
         return false;
     }
+
     if (!LookupPrivilegeValue(NULL, SE_DEBUG_NAME, &sedebugnameValue)) {
         CloseHandle(hToken);
         return false;
     }
+
     tkp.PrivilegeCount = 1;
     tkp.Privileges[0].Luid = sedebugnameValue;
     tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+
     if (!AdjustTokenPrivileges(hToken, FALSE, &tkp, sizeof(tkp), NULL, NULL)) {
         CloseHandle(hToken);
         return false;
     }
+
+    CloseHandle(hToken);
     return true;
 }
 
-
-
+// UNICODE_STRING & Process Parameters structures
 typedef struct _UNICODE_STRING {
     USHORT Length;
     USHORT MaximumLength;
@@ -43,25 +45,73 @@ typedef struct _RTL_USER_PROCESS_PARAMETERS {
     UNICODE_STRING CommandLine;
 } RTL_USER_PROCESS_PARAMETERS;
 
-typedef struct _PEB {
+// Extended PEB structure
+typedef struct _PEB_EXTENDED {
     BYTE Reserved1[2];
     BYTE BeingDebugged;
     BYTE Reserved2[1];
     PVOID Reserved3[2];
     PVOID Ldr;
     RTL_USER_PROCESS_PARAMETERS* ProcessParameters;
-    // More fields can be added if needed
-} PEB;
+    PVOID SubSystemData;
+    PVOID ProcessHeap;
+    PVOID FastPebLock;
+    PVOID AtlThunkSListPtr;
+    PVOID IFEOKey;
+    ULONG CrossProcessFlags;
+    PVOID KernelCallbackTable;
+    ULONG SystemReserved;
+    ULONG AtlThunkSListPtr32;
+    PVOID ApiSetMap;
+    ULONG TlsExpansionCounter;
+    PVOID TlsBitmap;
+    ULONG TlsBitmapBits[2];
+    PVOID ReadOnlySharedMemoryBase;
+    PVOID HotpatchInformation;
+    PVOID ReadOnlyStaticServerData;
+    PVOID AnsiCodePageData;
+    PVOID OemCodePageData;
+    PVOID UnicodeCaseTableData;
+    ULONG NumberOfProcessors;
+    ULONG NtGlobalFlag;
+    LARGE_INTEGER CriticalSectionTimeout;
+    SIZE_T HeapSegmentReserve;
+    SIZE_T HeapSegmentCommit;
+    SIZE_T HeapDeCommitTotalFreeThreshold;
+    SIZE_T HeapDeCommitFreeBlockThreshold;
+    ULONG NumberOfHeaps;
+    ULONG MaximumNumberOfHeaps;
+    PVOID ProcessHeaps;
+    PVOID GdiSharedHandleTable;
+    PVOID ProcessStarterHelper;
+    ULONG GdiDCAttributeList;
+    PVOID LoaderLock;
+    ULONG OSMajorVersion;
+    ULONG OSMinorVersion;
+    USHORT OSBuildNumber;
+    USHORT OSCSDVersion;
+    ULONG OSPlatformId;
+    ULONG ImageSubsystem;
+    ULONG ImageSubsystemMajorVersion;
+    ULONG ImageSubsystemMinorVersion;
+    ULONG_PTR ActiveProcessAffinityMask;
+    SIZE_T GdiHandleBuffer[34];
+    PVOID PostProcessInitRoutine;
+    PVOID TlsExpansionBitmap;
+    ULONG TlsExpansionBitmapBits[32];
+    ULONG SessionId;
+} PEB_EXTENDED;
 
+// Process Basic Info
 typedef struct _PROCESS_BASIC_INFORMATION {
     PVOID Reserved1;
-    PEB* PebBaseAddress;
+    PEB_EXTENDED* PebBaseAddress;
     PVOID Reserved2[2];
     ULONG_PTR UniqueProcessId;
     PVOID Reserved3;
 } PROCESS_BASIC_INFORMATION;
 
-// Function pointer for NtQueryInformationProcess
+// NtQueryInformationProcess function pointer
 typedef NTSTATUS(WINAPI* PNTQUERYINFORMATIONPROCESS)(
     HANDLE ProcessHandle,
     ULONG ProcessInformationClass,
@@ -72,6 +122,7 @@ typedef NTSTATUS(WINAPI* PNTQUERYINFORMATIONPROCESS)(
 
 int main(int argc, char* argv[]) {
     enableDebugPriv();
+
     if (argc != 2) {
         printf("Usage: %s <PID>\n", argv[0]);
         return 1;
@@ -84,7 +135,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Get NtQueryInformationProcess
     HMODULE hNtDll = GetModuleHandleA("ntdll.dll");
     if (!hNtDll) {
         printf("[-] Failed to get handle to ntdll.dll\n");
@@ -112,8 +162,8 @@ int main(int argc, char* argv[]) {
 
     printf("[+] PEB Address: %p\n", pbi.PebBaseAddress);
 
-    // Read the PEB
-    PEB peb = { 0 };
+    // Read the extended PEB
+    PEB_EXTENDED peb = { 0 };
     SIZE_T bytesRead = 0;
     if (!ReadProcessMemory(hProcess, pbi.PebBaseAddress, &peb, sizeof(peb), &bytesRead)) {
         printf("[-] Failed to read PEB. Error: %lu\n", GetLastError());
@@ -122,9 +172,15 @@ int main(int argc, char* argv[]) {
     }
 
     printf("[+] BeingDebugged: %d\n", peb.BeingDebugged);
+    printf("[+] ProcessHeap: %p\n", peb.ProcessHeap);
+    printf("[+] IFEOKey: %p\n", peb.IFEOKey);
+    printf("[+] NumberOfProcessors: %lu\n", peb.NumberOfProcessors);
+    printf("[+] NtGlobalFlag: 0x%lx\n", peb.NtGlobalFlag);
+    printf("[+] OS Version: %lu.%lu (Build %u)\n", peb.OSMajorVersion, peb.OSMinorVersion, peb.OSBuildNumber);
+    printf("[+] SessionId: %lu\n", peb.SessionId);
     printf("[+] ProcessParameters: %p\n", peb.ProcessParameters);
 
-    // Read the ProcessParameters
+    // Read the RTL_USER_PROCESS_PARAMETERS
     RTL_USER_PROCESS_PARAMETERS procParams = { 0 };
     if (!ReadProcessMemory(hProcess, peb.ProcessParameters, &procParams, sizeof(procParams), &bytesRead)) {
         printf("[-] Failed to read RTL_USER_PROCESS_PARAMETERS. Error: %lu\n", GetLastError());
@@ -132,7 +188,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Read and print CommandLine string
+    // Read CommandLine string
     WCHAR commandLine[1024] = { 0 };
     if (procParams.CommandLine.Length > 0 && procParams.CommandLine.Length < sizeof(commandLine)) {
         if (!ReadProcessMemory(hProcess, (LPCVOID)procParams.CommandLine.Buffer, commandLine, procParams.CommandLine.Length, &bytesRead)) {
@@ -143,7 +199,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    // Read and print ImagePathName
+    // Read ImagePathName string
     WCHAR imagePath[1024] = { 0 };
     if (procParams.ImagePathName.Length > 0 && procParams.ImagePathName.Length < sizeof(imagePath)) {
         if (!ReadProcessMemory(hProcess, (LPCVOID)procParams.ImagePathName.Buffer, imagePath, procParams.ImagePathName.Length, &bytesRead)) {
