@@ -1,6 +1,7 @@
 # Power-EVTXtoCSV
 
-![Power-EVTXtoCSV Banner](https://i.imgur.com/7YwO3PR.png)
+![Power-EVTXtoCSV Banner](https://github.com/amohanta/Detection_Engineering_Tools/blob/main/Forensics_tools/Power_EvtxToCsv/image/evtx.png)
+
 
 **Power-EVTXtoCSV** is a PowerShell-based forensic utility designed to parse Windows `.evtx` event log files into structured CSV format for easier analysis in Excel, SIEMs, or custom incident response tools.
 
