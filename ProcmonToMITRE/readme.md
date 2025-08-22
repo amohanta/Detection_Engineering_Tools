@@ -25,4 +25,4 @@ It is useful for malware analysis, detection engineering, and learning how attac
    .\ProcmonToMITRE.ps1 procmon_log.csv
 
 **Screenshot**
-(images/proc.png)
+![ProcmonTOMITRE](images/proc.png)
