@@ -9,13 +9,10 @@ MalStringClassifier is a Windows-based tool designed to extract strings from bin
 
 This tool is particularly useful for malware analysts who want to quickly identify the role of strings inside a binary. For example, whether a string belongs to virtualization detection (VBOX), script execution (powershell), or C2 communication (http:).
 
-By highlighting the significance of each string, the tool helps:
-
-Prioritize strings during malware reverse engineering.
-
-Select the most meaningful strings for writing YARA or other detection rules.
-
-Speed up triage of unknown binaries.
+By highlighting the significance of each string, the tool helps:  
+- **Prioritize strings during malware reverse engineering.**  
+- **Select the most meaningful strings for writing YARA or other detection rules.**  
+- **Speed up triage of unknown binaries.**  
 
 **🚀 Features**
 
