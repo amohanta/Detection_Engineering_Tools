@@ -23,5 +23,6 @@ Displays tool name (MalStringClassifier) and author credits in the UI.
 
 📂 Output Example
 If the tool processes sample.bin, it will generate sample_strings.csv:
+see the screenshot of the csv in the image
 
 ![MalStringClassifier UI](images/tool_ui.png)  
