@@ -82,130 +82,154 @@ Each log contains timestamped API calls with parameter details.
 ---
 
 🔧 Supported 120+ API's
-ExitProcess
-CreateProcessA
-CreateProcessW
-WinExec
-OpenProcess
-VirtualAllocEx
-WriteProcessMemory
-CreateRemoteThread
-RegCreateKeyExA
-RegCreateKeyExW
-RegSetValueExA
-RegSetValueExW
-CreateFileA
-CreateFileW
-WriteFile
-CreateMutexA
-CreateMutexW
-InternetOpenA
-InternetOpenW
-InternetConnectA
-InternetConnectW
-VirtualAlloc
-VirtualFree
-ZwTerminateProcess
-LoadLibraryA
-LoadLibraryW
-GetProcAddress
-VirtualProtect
-HttpOpenRequestA
-HttpOpenRequestW
-InternetReadFile
-FindFirstFileA
-FindFirstFileW
-FindNextFileA
-FindNextFileW
-CreateDirectoryA
-CreateDirectoryW
-CloseHandle
-ReadFile
-CreateToolhelp32Snapshot
-Process32FirstW
-Process32NextW
-Module32FirstW
-Module32NextW
-WSAStartup
-WinHttpOpen
-WinHttpConnect
-WinHttpOpenRequest
-WinHttpSendRequest
-OpenSCManagerA
-OpenSCManagerW
-CreateServiceA
-CreateServiceW
-StartServiceA
-StartServiceW
-DeleteService
-OpenProcessToken
-DuplicateTokenEx
-LstrcmpA
-LstrcmpW
-StrStrIA
-StrStrIW
-Stricmp
-Sleep
-CryptImportPublicKeyInfo
-CryptEncrypt
-CryptDestroyHash
-CryptCreateHash
-CryptHashData
-CryptAcquireContextA
-CryptAcquireContextW
-CryptVerifySignatureA
-CryptVerifySignatureW
-CryptStringToBinaryA
-CryptStringToBinaryW
-CryptGenKey
-CryptImportKey
-CryptExportKey
-Memcpy
-Memmove
-Memset
-Memcmp
-RtlMoveMemory
-RtlCopyMemory
-GetAddrInfoA
-SetFilePointer
-DuplicateHandle
-GetThreadContext
-SetThreadContext
-MapViewOfSection
-MapViewOfFile
-CreateSection
-ResumeThread
-CreateIoCompletionPort
-PostQueuedCompletionStatus
-GetQueuedCompletionStatus
-IsDebuggerPresent
-MoveFileA
-MoveFileW
-MoveFileExA
-SetWindowsHookExA
-SetWindowsHookExW
-GetAsyncKeyState
-GetKeyState
-GetKeyboardState
-MapVirtualKeyA
-MapVirtualKeyW
-MapVirtualKeyExA
-MapVirtualKeyExW
-GetDC
-BitBlt
-URLDownloadToFile
-gethostbyname
-gethostname
-WNetAddConnection2A
-WNetAddConnection2W
-WNetAddConnectionA
-WNetAddConnectionW
-WNetCloseEnum
-WNetEnumResourceA
-WNetEnumResourceW
-WNetOpenEnumA
-WNetOpenEnumW
-GetClipboardData
+# Windows API Functions Commonly Used by Malware
+
+## kernel32.dll
+- ExitProcess  
+- CreateProcessA  
+- CreateProcessW  
+- WinExec  
+- OpenProcess  
+- VirtualAllocEx  
+- WriteProcessMemory  
+- CreateRemoteThread  
+- CreateFileA  
+- CreateFileW  
+- WriteFile  
+- CreateMutexA  
+- CreateMutexW  
+- VirtualAlloc  
+- VirtualFree  
+- LoadLibraryA  
+- LoadLibraryW  
+- GetProcAddress  
+- VirtualProtect  
+- FindFirstFileA  
+- FindFirstFileW  
+- FindNextFileA  
+- FindNextFileW  
+- CreateDirectoryA  
+- CreateDirectoryW  
+- CloseHandle  
+- ReadFile  
+- CreateToolhelp32Snapshot  
+- Process32FirstW  
+- Process32NextW  
+- Module32FirstW  
+- Module32NextW  
+- SetFilePointer  
+- DuplicateHandle  
+- GetThreadContext  
+- SetThreadContext  
+- ResumeThread  
+- CreateIoCompletionPort  
+- PostQueuedCompletionStatus  
+- GetQueuedCompletionStatus  
+- MoveFileA  
+- MoveFileW  
+- MoveFileExA  
+- Sleep  
+
+## ntdll.dll
+- ZwTerminateProcess  
+- RtlMoveMemory  
+- RtlCopyMemory  
+- Memcpy  
+- Memmove  
+- Memset  
+- Memcmp  
+- CreateSection  
+- MapViewOfSection  
+
+## advapi32.dll
+- RegCreateKeyExA  
+- RegCreateKeyExW  
+- RegSetValueExA  
+- RegSetValueExW  
+- OpenSCManagerA  
+- OpenSCManagerW  
+- CreateServiceA  
+- CreateServiceW  
+- StartServiceA  
+- StartServiceW  
+- DeleteService  
+- OpenProcessToken  
+- DuplicateTokenEx  
+
+## crypt32.dll / advapi32.dll
+- CryptImportPublicKeyInfo  
+- CryptEncrypt  
+- CryptDestroyHash  
+- CryptCreateHash  
+- CryptHashData  
+- CryptAcquireContextA  
+- CryptAcquireContextW  
+- CryptVerifySignatureA  
+- CryptVerifySignatureW  
+- CryptStringToBinaryA  
+- CryptStringToBinaryW  
+- CryptGenKey  
+- CryptImportKey  
+- CryptExportKey  
+
+## wininet.dll
+- InternetOpenA  
+- InternetOpenW  
+- InternetConnectA  
+- InternetConnectW  
+- HttpOpenRequestA  
+- HttpOpenRequestW  
+- InternetReadFile  
+
+## winhttp.dll
+- WinHttpOpen  
+- WinHttpConnect  
+- WinHttpOpenRequest  
+- WinHttpSendRequest  
+
+## ws2_32.dll
+- WSAStartup  
+- GetAddrInfoA  
+- gethostbyname  
+- gethostname  
+
+## gdi32.dll / user32.dll
+- GetDC  
+- BitBlt  
+- SetWindowsHookExA  
+- SetWindowsHookExW  
+- GetAsyncKeyState  
+- GetKeyState  
+- GetKeyboardState  
+- MapVirtualKeyA  
+- MapVirtualKeyW  
+- MapVirtualKeyExA  
+- MapVirtualKeyExW  
+
+## urlmon.dll
+- URLDownloadToFile  
+
+## mpr.dll
+- WNetAddConnection2A  
+- WNetAddConnection2W  
+- WNetAddConnectionA  
+- WNetAddConnectionW  
+- WNetCloseEnum  
+- WNetEnumResourceA  
+- WNetEnumResourceW  
+- WNetOpenEnumA  
+- WNetOpenEnumW  
+
+## user32.dll (additional)
+- GetClipboardData  
+- IsDebuggerPresent  
+
+## shlwapi.dll
+- LstrcmpA  
+- LstrcmpW  
+- StrStrIA  
+- StrStrIW  
+- Stricmp  
 
   
 ## ⚠️ Limitations
