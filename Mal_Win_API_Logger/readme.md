@@ -81,98 +81,132 @@ Each log contains timestamped API calls with parameter details.
 
 ---
 
-🔧 Supported API Functions
+🔧 Supported 120+ API's
+ExitProcess
+CreateProcessA
+CreateProcessW
+WinExec
+OpenProcess
+VirtualAllocEx
+WriteProcessMemory
+CreateRemoteThread
+RegCreateKeyExA
+RegCreateKeyExW
+RegSetValueExA
+RegSetValueExW
+CreateFileA
+CreateFileW
+WriteFile
+CreateMutexA
+CreateMutexW
+InternetOpenA
+InternetOpenW
+InternetConnectA
+InternetConnectW
+VirtualAlloc
+VirtualFree
+ZwTerminateProcess
+LoadLibraryA
+LoadLibraryW
+GetProcAddress
+VirtualProtect
+HttpOpenRequestA
+HttpOpenRequestW
+InternetReadFile
+FindFirstFileA
+FindFirstFileW
+FindNextFileA
+FindNextFileW
+CreateDirectoryA
+CreateDirectoryW
+CloseHandle
+ReadFile
+CreateToolhelp32Snapshot
+Process32FirstW
+Process32NextW
+Module32FirstW
+Module32NextW
+WSAStartup
+WinHttpOpen
+WinHttpConnect
+WinHttpOpenRequest
+WinHttpSendRequest
+OpenSCManagerA
+OpenSCManagerW
+CreateServiceA
+CreateServiceW
+StartServiceA
+StartServiceW
+DeleteService
+OpenProcessToken
+DuplicateTokenEx
+LstrcmpA
+LstrcmpW
+StrStrIA
+StrStrIW
+Stricmp
+Sleep
+CryptImportPublicKeyInfo
+CryptEncrypt
+CryptDestroyHash
+CryptCreateHash
+CryptHashData
+CryptAcquireContextA
+CryptAcquireContextW
+CryptVerifySignatureA
+CryptVerifySignatureW
+CryptStringToBinaryA
+CryptStringToBinaryW
+CryptGenKey
+CryptImportKey
+CryptExportKey
+Memcpy
+Memmove
+Memset
+Memcmp
+RtlMoveMemory
+RtlCopyMemory
+GetAddrInfoA
+SetFilePointer
+DuplicateHandle
+GetThreadContext
+SetThreadContext
+MapViewOfSection
+MapViewOfFile
+CreateSection
+ResumeThread
+CreateIoCompletionPort
+PostQueuedCompletionStatus
+GetQueuedCompletionStatus
+IsDebuggerPresent
+MoveFileA
+MoveFileW
+MoveFileExA
+SetWindowsHookExA
+SetWindowsHookExW
+GetAsyncKeyState
+GetKeyState
+GetKeyboardState
+MapVirtualKeyA
+MapVirtualKeyW
+MapVirtualKeyExA
+MapVirtualKeyExW
+GetDC
+BitBlt
+URLDownloadToFile
+gethostbyname
+gethostname
+WNetAddConnection2A
+WNetAddConnection2W
+WNetAddConnectionA
+WNetAddConnectionW
+WNetCloseEnum
+WNetEnumResourceA
+WNetEnumResourceW
+WNetOpenEnumA
+WNetOpenEnumW
+GetClipboardData
 
-📁 **kernel32.dll**
-- `ExitProcess`
-- `CreateProcessA`
-- `CreateProcessW`
-- `WinExec`
-- `OpenProcess`
-- `VirtualAlloc`
-- `VirtualAllocEx`
-- `VirtualFree`
-- `WriteProcessMemory`
-- `CreateRemoteThread`
-- `CreateFileA`
-- `CreateFileW`
-- `WriteFile`
-- `CreateMutexA`
-- `CreateMutexW`
-- `CreateDirectoryA`
-- `CreateDirectoryW`
-- `FindFirstFileA`
-- `FindFirstFileW`
-- `FindNextFileA`
-- `FindNextFileW`
-- `CloseHandle`
-- `ReadFile`
-- `GetProcAddress`
-- `LoadLibraryA`
-- `LoadLibraryW`
-- `VirtualProtect`
-- `CreateToolhelp32Snapshot`
-- `Process32FirstW`
-- `Process32NextW`
-- `Module32FirstW`
-- `Module32NextW`
-
----
-
-📁 **advapi32.dll**
-- `RegCreateKeyExA`
-- `RegCreateKeyExW`
-- `RegSetValueExA`
-- `RegSetValueExW`
-- `OpenSCManagerA`
-- `OpenSCManagerW`
-- `CreateServiceA`
-- `CreateServiceW`
-- `StartServiceA`
-- `StartServiceW`
-- `DeleteService`
-- `OpenProcessToken`
-- `DuplicateTokenEx`
-
----
-
-📁 **ws2_32.dll**
-- `WSAStartup`
-
----
-
-📁 **winhttp.dll**
-- `WinHttpOpen`
-- `WinHttpConnect`
-- `WinHttpOpenRequest`
-- `WinHttpSendRequest`
-
----
-
-📁 **wininet.dll**
-- `InternetOpenA`
-- `InternetOpenW`
-- `InternetConnectA`
-- `InternetConnectW`
-- `HttpOpenRequestA`
-- `HttpOpenRequestW`
-- `InternetReadFile`
-
-
----
-
-📁 **ntdll.dll**
-- `ZwTerminateProcess`
-- `RtlMoveMemory`
-- `RtlCopyMemory`
-
----
-
-📁 **msvcrt.dll**
-- `memcpy`
-- `memmove`
-- `memset`
-- `memcmp`
   
 ## ⚠️ Limitations
 - ❌ Does **not support .NET/managed binaries**
