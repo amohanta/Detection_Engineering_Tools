@@ -82,41 +82,37 @@ Each log contains timestamped API calls with parameter details.
 ---
 
 🔧 Supported 120+ API's
-# Windows API Functions Commonly Used by Malware
+# Windows API's Logged
 
-## kernel32.dll
+### kernel32.dll
 - ExitProcess  
 - CreateProcessA  
 - CreateProcessW  
 - WinExec  
 - OpenProcess  
+- VirtualAlloc  
+- VirtualFree  
 - VirtualAllocEx  
 - WriteProcessMemory  
 - CreateRemoteThread  
 - CreateFileA  
 - CreateFileW  
 - WriteFile  
+- ReadFile  
 - CreateMutexA  
 - CreateMutexW  
-- VirtualAlloc  
-- VirtualFree  
-- LoadLibraryA  
-- LoadLibraryW  
-- GetProcAddress  
-- VirtualProtect  
+- CloseHandle  
 - FindFirstFileA  
 - FindFirstFileW  
 - FindNextFileA  
 - FindNextFileW  
 - CreateDirectoryA  
 - CreateDirectoryW  
-- CloseHandle  
-- ReadFile  
-- CreateToolhelp32Snapshot  
-- Process32FirstW  
-- Process32NextW  
-- Module32FirstW  
-- Module32NextW  
+- LoadLibraryA  
+- LoadLibraryW  
+- GetProcAddress  
+- VirtualProtect  
+- Sleep  
 - SetFilePointer  
 - DuplicateHandle  
 - GetThreadContext  
@@ -124,24 +120,33 @@ Each log contains timestamped API calls with parameter details.
 - ResumeThread  
 - CreateIoCompletionPort  
 - PostQueuedCompletionStatus  
-- GetQueuedCompletionStatus  
+- GetQueuedCompletionPort  
 - MoveFileA  
 - MoveFileW  
 - MoveFileExA  
-- Sleep  
+- CreateToolhelp32Snapshot  
+- Process32FirstW  
+- Process32NextW  
+- Module32FirstW  
+- Module32NextW  
 
-## ntdll.dll
+---
+
+### ntdll.dll
 - ZwTerminateProcess  
 - RtlMoveMemory  
 - RtlCopyMemory  
-- Memcpy  
-- Memmove  
-- Memset  
-- Memcmp  
+- memcpy  
+- memmove  
+- memset  
+- memcmp  
 - CreateSection  
 - MapViewOfSection  
+- MapViewOfFile  
 
-## advapi32.dll
+---
+
+### advapi32.dll
 - RegCreateKeyExA  
 - RegCreateKeyExW  
 - RegSetValueExA  
@@ -156,7 +161,9 @@ Each log contains timestamped API calls with parameter details.
 - OpenProcessToken  
 - DuplicateTokenEx  
 
-## crypt32.dll / advapi32.dll
+---
+
+### crypt32.dll / advapi32.dll
 - CryptImportPublicKeyInfo  
 - CryptEncrypt  
 - CryptDestroyHash  
@@ -171,8 +178,11 @@ Each log contains timestamped API calls with parameter details.
 - CryptGenKey  
 - CryptImportKey  
 - CryptExportKey  
+- CryptGenRandom  
 
-## wininet.dll
+---
+
+### wininet.dll
 - InternetOpenA  
 - InternetOpenW  
 - InternetConnectA  
@@ -181,23 +191,42 @@ Each log contains timestamped API calls with parameter details.
 - HttpOpenRequestW  
 - InternetReadFile  
 
-## winhttp.dll
+---
+
+### winhttp.dll
 - WinHttpOpen  
 - WinHttpConnect  
 - WinHttpOpenRequest  
 - WinHttpSendRequest  
 
-## ws2_32.dll
-- WSAStartup  
-- GetAddrInfoA  
-- gethostbyname  
-- gethostname  
+---
 
-## gdi32.dll / user32.dll
-- GetDC  
-- BitBlt  
-- SetWindowsHookExA  
-- SetWindowsHookExW  
+### ws2_32.dll
+- WSAStartup  
+- socket  
+- WSASocketA  
+- WSASocketW  
+- connect  
+- closesocket  
+- WSAConnect  
+- send  
+- recv  
+- WSASend  
+- WSARecv  
+
+---
+
+### shlwapi.dll
+- LstrcmpA  
+- LstrcmpW  
+- StrStrIA  
+- StrStrIW  
+- Stricmp  
+
+---
+
+### user32.dll
+- SetWindowsHookEx  
 - GetAsyncKeyState  
 - GetKeyState  
 - GetKeyboardState  
@@ -205,11 +234,27 @@ Each log contains timestamped API calls with parameter details.
 - MapVirtualKeyW  
 - MapVirtualKeyExA  
 - MapVirtualKeyExW  
+- GetDC  
 
-## urlmon.dll
+---
+
+### gdi32.dll
+- BitBlt  
+
+---
+
+### urlmon.dll
 - URLDownloadToFile  
 
-## mpr.dll
+---
+
+### wininet.dll (legacy)
+- gethostbyname  
+- gethostname  
+
+---
+
+### mpr.dll
 - WNetAddConnection2A  
 - WNetAddConnection2W  
 - WNetAddConnectionA  
@@ -220,16 +265,16 @@ Each log contains timestamped API calls with parameter details.
 - WNetOpenEnumA  
 - WNetOpenEnumW  
 
-## user32.dll (additional)
+---
+
+### user32.dll (clipboard)
 - GetClipboardData  
+
+---
+
+### kernel32.dll / debugging
 - IsDebuggerPresent  
 
-## shlwapi.dll
-- LstrcmpA  
-- LstrcmpW  
-- StrStrIA  
-- StrStrIW  
-- Stricmp  
 
   
 ## ⚠️ Limitations
