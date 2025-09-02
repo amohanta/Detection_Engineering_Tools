@@ -4,6 +4,10 @@
 **Author of the book "Malware Analysis and Detection Engineering"**
 
 **📖 Description**
+**📖 Note** Tool can be detected as malware by antiviruses as it contains malicious strings hardcoded in it.
+MalStringClassifier.exe - CLI version
+MalStringClassifierGUI.exe UI version
+MalStringClassifierGUI-password-clean.zip ;  password for this zip = clean
 
 MalStringClassifier is a Windows-based tool designed to extract strings from binary files and classify them based on their significance. The tool supports both ASCII and Unicode string extraction and generates a CSV report mapping each extracted string to its relevance (such as Anti-VM, C2 communication, scripting engines, URLs, registry usage, etc.).
 
@@ -26,3 +30,4 @@ If the tool processes sample.bin, it will generate sample_strings.csv:
 see the screenshot of the csv in the image
 
 ![MalStringClassifier UI](images/tool_ui.png)  
+![MalStringClassifier UI](images/malstringclassifier.png)
