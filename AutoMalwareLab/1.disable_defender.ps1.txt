@@ -1,0 +1,68 @@
+# Run as Administrator
+
+Write-Host "Disabling Windows Defender features..." -ForegroundColor Cyan
+
+# 1. Stop and disable Defender-related services
+$services = @(
+    "WinDefend",         # Microsoft Defender Antivirus Service
+    "WdNisSvc",          # Network Inspection Service
+    "Sense",             # ATP Service
+    "SecurityHealthService"  # Security Center
+)
+
+foreach ($svc in $services) {
+    Write-Host "Stopping and disabling service: $svc"
+    Stop-Service -Name $svc -Force -ErrorAction SilentlyContinue
+    Set-Service -Name $svc -StartupType Disabled -ErrorAction SilentlyContinue
+}
+
+# 2. Kill Defender processes
+$processes = @("MsMpEng", "NisSrv")
+foreach ($proc in $processes) {
+    Get-Process $proc -ErrorAction SilentlyContinue | Stop-Process -Force
+}
+
+# 3. Set registry to disable Defender
+$basePath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender"
+New-Item -Path $basePath -Force | Out-Null
+
+Set-ItemProperty -Path $basePath -Name "DisableAntiSpyware" -Value 1 -Force
+Set-ItemProperty -Path $basePath -Name "DisableRealtimeMonitoring" -Value 1 -Force
+Set-ItemProperty -Path $basePath -Name "DisableRoutinelyTakingAction" -Value 1 -Force
+Set-ItemProperty -Path $basePath -Name "PUAProtection" -Value 1 -Force
+
+# 4. Disable Real-Time Protection
+$rtPath = "$basePath\Real-Time Protection"
+New-Item -Path $rtPath -Force | Out-Null
+Set-ItemProperty -Path $rtPath -Name "DisableBehaviorMonitoring" -Value 1
+Set-ItemProperty -Path $rtPath -Name "DisableOnAccessProtection" -Value 1
+Set-ItemProperty -Path $rtPath -Name "DisableScanOnRealtimeEnable" -Value 1
+Set-ItemProperty -Path $rtPath -Name "DisableRealtimeMonitoring" -Value 1
+
+# 5. Disable Cloud Delivered Protection
+Set-ItemProperty -Path $basePath -Name "SpynetReporting" -Value 0 -Force
+Set-ItemProperty -Path $basePath -Name "SubmitSamplesConsent" -Value 2 -Force
+
+# 6. Disable Defender UI Notifications
+$notifPath = "HKLM:\Software\Policies\Microsoft\Windows Defender Security Center\Notifications"
+New-Item -Path $notifPath -Force | Out-Null
+Set-ItemProperty -Path $notifPath -Name "DisableNotifications" -Value 1
+
+# 7. Disable Scheduled Tasks
+$tasks = @(
+    "\Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance",
+    "\Microsoft\Windows\Windows Defender\Windows Defender Cleanup",
+    "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan",
+    "\Microsoft\Windows\Windows Defender\Windows Defender Verification"
+)
+
+foreach ($task in $tasks) {
+    Write-Host "Disabling Defender scheduled task: $task"
+    schtasks /Change /TN $task /Disable 2>$null
+}
+
+# 8. Disable Security Center (optional)
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\SecurityHealthService" -Name "Start" -Value 4
+
+Write-Host "`n[!] Tamper Protection must be disabled manually in Windows Security settings."
+Write-Host "[+] Defender has been disabled. Please reboot the system." -ForegroundColor Green
