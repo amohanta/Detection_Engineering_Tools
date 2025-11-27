@@ -1,0 +1,26 @@
+---
+title: Suspicious Execution of Rundll32 by Scripting Engines
+id: 12345678-1234-1234-1234-123456789012
+status: test
+description: Detects when scripting engines (cscript.exe or wscript.exe) are launched by rundll32.exe
+references:
+  - https://attack.mitre.org/techniques/T1218/011/
+author: abhijit
+date: 2024/05/27
+modified: 2024/05/28
+tags:
+  - attack.defense_evasion
+  - attack.t1218.011
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    Image|endswith: '\rundll32.exe'
+    ParentImage|endswith:
+      - '\cscript.exe'
+      - '\wscript.exe'
+  condition: selection
+falsepositives:
+  - Legitimate system administration scripts (review if uncommon)
+level: high
