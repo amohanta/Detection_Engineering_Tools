@@ -1,0 +1,71 @@
+# Run as Administrator!
+
+Write-Host "Disabling Windows Update completely..." -ForegroundColor Cyan
+
+# 1. Stop and Disable Windows Update Services
+$services = @(
+    "wuauserv",          # Windows Update
+    "bits",              # Background Intelligent Transfer Service
+    "dosvc",             # Delivery Optimization
+    "UsoSvc",            # Update Orchestrator
+    "WaaSMedicSvc"       # Windows Update Medic Service
+)
+
+foreach ($svc in $services) {
+    Write-Host "Stopping and disabling service: $svc"
+    Stop-Service -Name $svc -Force -ErrorAction SilentlyContinue
+    Set-Service -Name $svc -StartupType Disabled -ErrorAction SilentlyContinue
+}
+
+# 2. Disable Update Orchestrator and Windows Update scheduled tasks
+$tasks = @(
+    "\Microsoft\Windows\UpdateOrchestrator\ScheduleScan",
+    "\Microsoft\Windows\UpdateOrchestrator\ScheduleRetryScan",
+    "\Microsoft\Windows\UpdateOrchestrator\UpdateModelTask",
+    "\Microsoft\Windows\UpdateOrchestrator\USO_UxBroker",
+    "\Microsoft\Windows\UpdateOrchestrator\USO_BackgroundScan",
+    "\Microsoft\Windows\UpdateOrchestrator\Reboot",
+    "\Microsoft\Windows\WindowsUpdate\Automatic App Update",
+    "\Microsoft\Windows\WindowsUpdate\sih",
+    "\Microsoft\Windows\WindowsUpdate\sihboot"
+)
+
+foreach ($task in $tasks) {
+    Write-Host "Disabling task: $task"
+    schtasks /Change /TN $task /Disable 2>$null
+}
+
+# 3. Set Registry Policies to Disable Automatic Updates
+Write-Host "Applying registry settings..."
+
+# Disable Windows Update in Control Panel / Settings
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Force | Out-Null
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name "DoNotConnectToWindowsUpdateInternetLocations" -Value 1
+
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Force | Out-Null
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoUpdate" -Value 1
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "AUOptions" -Value 1
+
+# Disable Windows Update section in the Settings app
+New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\Explorer" -Force | Out-Null
+Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\Explorer" -Name "NoWindowsUpdate" -Value 1
+
+# 4. Prevent "Update and Shutdown" by removing pending updates
+Write-Host "Removing pending reboot and update flags..."
+
+# Delete reboot-required registry keys
+$pendingPaths = @(
+    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired",
+    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending",
+    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Orchestrator\RebootRequired"
+)
+
+foreach ($path in $pendingPaths) {
+    if (Test-Path $path) {
+        Remove-Item -Path $path -Recurse -Force -ErrorAction SilentlyContinue
+        Write-Host "Removed: $path"
+    }
+}
+
+Write-Host "`n[+] Windows Update has been fully disabled, including 'Update and Shutdown' prompts." -ForegroundColor Green
+Write-Host "[!] Reboot the machine to finalize changes." -ForegroundColor Yellow
