@@ -60,6 +60,39 @@ foreach ($file in $UserArtifacts) {
 }
 
 # ----------------------------------------------
+# Collect UsrClass.dat Registry Hive
+# ----------------------------------------------
+Write-Host "`n[+] Collecting UsrClass.dat Registry Hive..."
+
+# UsrClass.dat base directory
+$UsrClassDir = Join-Path $env:LOCALAPPDATA "Microsoft\Windows"
+
+# Files to collect
+$UsrClassFiles = @(
+    "UsrClass.dat",
+    "UsrClass.dat.LOG1",
+    "UsrClass.dat.LOG2"
+)
+
+# Add extra UsrClass.dat.LOG* files if present (LOG3, LOG4, etc.)
+$ExtraUsrLogs = Get-ChildItem -Path $UsrClassDir -Filter "UsrClass.dat.LOG*" -ErrorAction SilentlyContinue
+foreach ($log in $ExtraUsrLogs) {
+    if ($UsrClassFiles -notcontains $log.Name) {
+        $UsrClassFiles += $log.Name
+    }
+}
+
+foreach ($file in $UsrClassFiles) {
+    $Source = Join-Path $UsrClassDir $file
+    $Dest   = Join-Path $OutDir $file
+
+    if (Test-Path $Source) {
+        Write-Host "    -> $file"
+        & $RawCopy "$Source" "$Dest"
+    }
+}
+
+# ----------------------------------------------
 # Collect MAIN SYSTEM HIVES
 # ----------------------------------------------
 Write-Host "`n[+] Collecting System Registry Hives..."
