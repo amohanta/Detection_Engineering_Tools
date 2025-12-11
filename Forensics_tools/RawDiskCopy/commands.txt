@@ -1,3 +1,8 @@
+RawDiskCopyx64.exe C:$Extend$UsnJrnl:$J:$DATA $Extend$UsnJrnl$J$DATA
+RawDiskCopy_x64.exe C:$MFT $MFT_2
+RawDiskCopy_x64.exe C:$MFTMirr $MFTMirr
+RawDiskCopy_x64.exe C:$MFT::$BITMAP $MFT__$BITMAP
+
 ==========================
  USER HIVE - NTUSER.DAT
 ==========================
