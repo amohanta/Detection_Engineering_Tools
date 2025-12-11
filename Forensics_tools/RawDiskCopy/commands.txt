@@ -1,10 +1,78 @@
-RawDiskCopy_x64.exe C:\$Extend\$UsnJrnl:$J:$DATA $Extend_$UsnJrnl_$J_$DATA
-RawDiskCopy_x64.exe C:\$MFT $MFT_2
-RawDiskCopy_x64.exe C:\$MFTMirr $MFTMirr
-RawDiskCopy_x64.exe C:\$MFT::$BITMAP $MFT__$BITMAP
+==========================
+ USER HIVE - NTUSER.DAT
+==========================
 
-  others
-================
-  C:\$LogFile
-C:\$Bitmap
-C:\$Boot
+RawDiskCopy_x64.exe "%USERPROFILE%\NTUSER.DAT" NTUSER.DAT
+RawDiskCopy_x64.exe "%USERPROFILE%\NTUSER.DAT.LOG1" NTUSER.DAT.LOG1
+RawDiskCopy_x64.exe "%USERPROFILE%\NTUSER.DAT.LOG2" NTUSER.DAT.LOG2
+
+==========================
+ USER HIVE - USRCLASS.DAT
+==========================
+
+RawDiskCopy_x64.exe "%LOCALAPPDATA%\Microsoft\Windows\UsrClass.dat" UsrClass.dat
+RawDiskCopy_x64.exe "%LOCALAPPDATA%\Microsoft\Windows\UsrClass.dat.LOG1" UsrClass.dat.LOG1
+RawDiskCopy_x64.exe "%LOCALAPPDATA%\Microsoft\Windows\UsrClass.dat.LOG2" UsrClass.dat.LOG2
+
+==========================
+ SYSTEM HIVE - SYSTEM
+==========================
+
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SYSTEM" SYSTEM
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SYSTEM.LOG1" SYSTEM.LOG1
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SYSTEM.LOG2" SYSTEM.LOG2
+
+==========================
+ SYSTEM HIVE - SOFTWARE
+==========================
+
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SOFTWARE" SOFTWARE
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SOFTWARE.LOG1" SOFTWARE.LOG1
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SOFTWARE.LOG2" SOFTWARE.LOG2
+
+==========================
+ SYSTEM HIVE - SAM
+==========================
+
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SAM" SAM
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SAM.LOG1" SAM.LOG1
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SAM.LOG2" SAM.LOG2
+
+==========================
+ SYSTEM HIVE - SECURITY
+==========================
+
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SECURITY" SECURITY
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SECURITY.LOG1" SECURITY.LOG1
+RawDiskCopy_x64.exe "C:\Windows\System32\config\SECURITY.LOG2" SECURITY.LOG2
+
+==========================
+ SYSTEM HIVE - DEFAULT
+==========================
+
+RawDiskCopy_x64.exe "C:\Windows\System32\config\DEFAULT" DEFAULT
+RawDiskCopy_x64.exe "C:\Windows\System32\config\DEFAULT.LOG1" DEFAULT.LOG1
+RawDiskCopy_x64.exe "C:\Windows\System32\config\DEFAULT.LOG2" DEFAULT.LOG2
+
+==========================
+ SRUM - SYSTEM RESOURCE USAGE MONITORING
+==========================
+
+RawDiskCopy_x64.exe "C:\Windows\System32\sru\SRUDB.dat" SRUDB.dat
+RawDiskCopy_x64.exe "C:\Windows\System32\sru\SRUDB.jfm" SRUDB.jfm
+RawDiskCopy_x64.exe "C:\Windows\System32\sru\*.regtrans-ms" SRU_regtrans
+RawDiskCopy_x64.exe "C:\Windows\System32\sru\*.blf" SRU_BLF
+
+==========================
+ REGBACK (Older Windows Only)
+==========================
+
+RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SYSTEM" SYSTEM_RegBack
+RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SOFTWARE" SOFTWARE_RegBack
+RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SAM" SAM_RegBack
+RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SECURITY" SECURITY_RegBack
+RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\DEFAULT" DEFAULT_RegBack
+
+==========================
+ END OF FILE
+==========================
