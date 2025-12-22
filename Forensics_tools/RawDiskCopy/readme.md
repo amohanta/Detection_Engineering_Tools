@@ -47,7 +47,9 @@ RawDiskCopy_x64.exe "%USERPROFILE%\NTUSER.DAT.LOG2" NTUSER.DAT.LOG2
 
 
 RawDiskCopy_x64.exe "%LOCALAPPDATA%\Microsoft\Windows\UsrClass.dat" UsrClass.dat
+
 RawDiskCopy_x64.exe "%LOCALAPPDATA%\Microsoft\Windows\UsrClass.dat.LOG1" UsrClass.dat.LOG1
+
 RawDiskCopy_x64.exe "%LOCALAPPDATA%\Microsoft\Windows\UsrClass.dat.LOG2" UsrClass.dat.LOG2
 
 
