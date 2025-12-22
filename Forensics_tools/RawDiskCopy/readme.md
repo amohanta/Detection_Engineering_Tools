@@ -35,49 +35,33 @@ RawDiskCopy_x64.exe "C:\Users\John\NTUSER.DAT" "C:\Forensics\NTUSER.DAT"
 ### copy other artifacts
 ```cmd
 RawDiskCopyx64.exe C:$Extend$UsnJrnl:$J:$DATA $Extend$UsnJrnl$J$DATA
-
 RawDiskCopy_x64.exe C:$MFT $MFT_2
-
 RawDiskCopy_x64.exe C:$MFTMirr $MFTMirr
-
 RawDiskCopy_x64.exe C:$MFT::$BITMAP $MFT__$BITMAP
-
-
 
 RawDiskCopy_x64.exe "%USERPROFILE%\NTUSER.DAT" NTUSER.DAT
 RawDiskCopy_x64.exe "%USERPROFILE%\NTUSER.DAT.LOG1" NTUSER.DAT.LOG1
 RawDiskCopy_x64.exe "%USERPROFILE%\NTUSER.DAT.LOG2" NTUSER.DAT.LOG2
 
-
-
 RawDiskCopy_x64.exe "%LOCALAPPDATA%\Microsoft\Windows\UsrClass.dat" UsrClass.dat
-
 RawDiskCopy_x64.exe "%LOCALAPPDATA%\Microsoft\Windows\UsrClass.dat.LOG1" UsrClass.dat.LOG1
-
 RawDiskCopy_x64.exe "%LOCALAPPDATA%\Microsoft\Windows\UsrClass.dat.LOG2" UsrClass.dat.LOG2
-
-
 
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SYSTEM" SYSTEM
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SYSTEM.LOG1" SYSTEM.LOG1
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SYSTEM.LOG2" SYSTEM.LOG2
 
-
-
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SOFTWARE" SOFTWARE
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SOFTWARE.LOG1" SOFTWARE.LOG1
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SOFTWARE.LOG2" SOFTWARE.LOG2
-
 
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SAM" SAM
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SAM.LOG1" SAM.LOG1
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SAM.LOG2" SAM.LOG2
 
-
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SECURITY" SECURITY
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SECURITY.LOG1" SECURITY.LOG1
 RawDiskCopy_x64.exe "C:\Windows\System32\config\SECURITY.LOG2" SECURITY.LOG2
-
 
 RawDiskCopy_x64.exe "C:\Windows\System32\config\DEFAULT" DEFAULT
 RawDiskCopy_x64.exe "C:\Windows\System32\config\DEFAULT.LOG1" DEFAULT.LOG1
@@ -87,7 +71,6 @@ RawDiskCopy_x64.exe "C:\Windows\System32\sru\SRUDB.dat" SRUDB.dat
 RawDiskCopy_x64.exe "C:\Windows\System32\sru\SRUDB.jfm" SRUDB.jfm
 RawDiskCopy_x64.exe "C:\Windows\System32\sru\*.regtrans-ms" SRU_regtrans
 RawDiskCopy_x64.exe "C:\Windows\System32\sru\*.blf" SRU_BLF
-
 
 RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SYSTEM" SYSTEM_RegBack
 RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SOFTWARE" SOFTWARE_RegBack
