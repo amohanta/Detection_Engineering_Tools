@@ -30,12 +30,15 @@ Supports **x86 and x64**, enabling raw copying of locked system files such as re
 RawDiskCopy_x64.exe "C:\Users\John\NTUSER.DAT" "C:\Forensics\NTUSER.DAT"
 ```
 
-=
+
 
 ### copy other artifacts
 RawDiskCopyx64.exe C:$Extend$UsnJrnl:$J:$DATA $Extend$UsnJrnl$J$DATA
+
 RawDiskCopy_x64.exe C:$MFT $MFT_2
+
 RawDiskCopy_x64.exe C:$MFTMirr $MFTMirr
+
 RawDiskCopy_x64.exe C:$MFT::$BITMAP $MFT__$BITMAP
 
 
