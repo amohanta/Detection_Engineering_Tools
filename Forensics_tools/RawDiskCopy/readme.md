@@ -33,6 +33,7 @@ RawDiskCopy_x64.exe "C:\Users\John\NTUSER.DAT" "C:\Forensics\NTUSER.DAT"
 
 
 ### copy other artifacts
+```cmd
 RawDiskCopyx64.exe C:$Extend$UsnJrnl:$J:$DATA $Extend$UsnJrnl$J$DATA
 
 RawDiskCopy_x64.exe C:$MFT $MFT_2
@@ -93,7 +94,7 @@ RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SOFTWARE" SOFTWARE_RegBa
 RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SAM" SAM_RegBack
 RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SECURITY" SECURITY_RegBack
 RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\DEFAULT" DEFAULT_RegBack
-
+```
 
 ## 📜 PowerShell Collection Script  
 A full artifact collector is included as:  
