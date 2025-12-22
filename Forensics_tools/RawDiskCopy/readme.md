@@ -76,9 +76,9 @@ RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\DEFAULT" DEFAULT_RegBack
 
 ============================================================
 RawDiskCopyx64.exe C:$Extend$UsnJrnl:$J:$DATA $Extend$UsnJrnl$J$DATA
-RawDiskCopy_x64.exe C:$MFT $MFT_2
-RawDiskCopy_x64.exe C:$MFTMirr $MFTMirr
-RawDiskCopy_x64.exe C:$MFT::$BITMAP $MFT__$BITMAP
+RawDiskCopy_x64.exe C:\$MFT $MFT_2
+RawDiskCopy_x64.exe C:\$MFTMirr $MFTMirr
+RawDiskCopy_x64.exe C:\$MFT::$BITMAP $MFT__$BITMAP
 ```
 
 ## 📜 PowerShell Collection Script  
