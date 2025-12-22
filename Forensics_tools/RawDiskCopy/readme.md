@@ -34,10 +34,6 @@ RawDiskCopy_x64.exe "C:\Users\John\NTUSER.DAT" "C:\Forensics\NTUSER.DAT"
 
 ### copy other artifacts
 ```cmd
-RawDiskCopyx64.exe C:$Extend$UsnJrnl:$J:$DATA $Extend$UsnJrnl$J$DATA
-RawDiskCopy_x64.exe C:$MFT $MFT_2
-RawDiskCopy_x64.exe C:$MFTMirr $MFTMirr
-RawDiskCopy_x64.exe C:$MFT::$BITMAP $MFT__$BITMAP
 
 RawDiskCopy_x64.exe "%USERPROFILE%\NTUSER.DAT" NTUSER.DAT
 RawDiskCopy_x64.exe "%USERPROFILE%\NTUSER.DAT.LOG1" NTUSER.DAT.LOG1
@@ -77,6 +73,12 @@ RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SOFTWARE" SOFTWARE_RegBa
 RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SAM" SAM_RegBack
 RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\SECURITY" SECURITY_RegBack
 RawDiskCopy_x64.exe "C:\Windows\System32\config\RegBack\DEFAULT" DEFAULT_RegBack
+
+============================================================
+RawDiskCopyx64.exe C:$Extend$UsnJrnl:$J:$DATA $Extend$UsnJrnl$J$DATA
+RawDiskCopy_x64.exe C:$MFT $MFT_2
+RawDiskCopy_x64.exe C:$MFTMirr $MFTMirr
+RawDiskCopy_x64.exe C:$MFT::$BITMAP $MFT__$BITMAP
 ```
 
 ## 📜 PowerShell Collection Script  
