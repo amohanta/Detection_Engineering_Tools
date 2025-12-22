@@ -1,0 +1,60 @@
+EvtxECmd.exe -d "C:\forensics\eventlogs" --csv "C:\forensics\Output\Evtx"
+
+PECmd.exe -d "C:\forensics\prefetch" --csv "C:\forensics\Output\Prefetch"
+
+JLECmd.exe -d "C:\forensics\jumplists" --csv "C:\forensics\Output\JumpLists"
+
+RECmd.exe -d "C:\forensics\cleaned_hives" --bn ".\BatchExamples\DFIRBatch.reb" --csv "C:\forensics\Output\Registry"
+
+RECmd.exe -d "C:\forensics\artifacts" --bn ".\BatchExamples\DFIRBatch.reb" --csv "C:\forensics\Output\Registry"
+
+SrumECmd.exe -f "C:\forensics\SRUM\SRUDB.dat" -r "C:\forensics\cleaned_hives\SOFTWARE" --csv "C:\forensics\Output\SRUM"
+
+LECmd.exe -d "C:\forensics\lnk" --all --csv "C:\forensics\Output\LNK"
+
+MFTECmd.exe -f "C:\forensics\file-system_artifacts\MFT.bin" --csv "C:\forensics\Output\MFT"
+
+MFTECmd.exe -f "C:\forensics\file-system_artifacts\UsnJrnl_J.bin" --csv "C:\forensics\Output\MFT"
+
+MFTECmd.exe -f "C:\forensics\file-system_artifacts\UsnJrnl_Max.bin" --csv "C:\forensics\Output\MFT"
+
+=============================================================================
+EvtxECmd.exe -f "C:\forensics\eventlogs\Security.evtx" --csv "C:\forensics\output\EventLogs"
+
+PECmd.exe -f "C:\forensics\prefetch\CMD.EXE-3F2A4B9E.pf" --csv "C:\forensics\output\Prefetch"
+
+JLECmd.exe -f "C:\forensics\jumplists\9b9cdc69c1c24e2b.automaticDestinations-ms" --csv "C:\forensics\output\JumpLists"
+
+LECmd.exe -f "C:\forensics\lnk\example.lnk" --all --csv "C:\forensics\output\LNK"
+
+RECmd.exe -f "C:\forensics\cleaned_hives\NTUSER.DAT" --bn ".\BatchExamples\DFIRBatch.reb" --csv "C:\forensics\output\Registry"
+
+SrumECmd.exe -f "C:\forensics\SRUM\SRUDB.dat" -r "C:\forensics\cleaned_hives\SOFTWARE" --csv "C:\forensics\output\SRUM"
+
+MFTECmd.exe -f "C:\forensics\file-system_artifacts\MFT.bin" --csv "C:\forensics\output\MFT"
+
+MFTECmd.exe -f "C:\forensics\file-system_artifacts\UsnJrnl_J.bin" --csv "C:\forensics\output\MFT"
+
+MFTECmd.exe -f "C:\forensics\file-system_artifacts\UsnJrnl_Max.bin" --csv "C:\forensics\output\MFT"
+
+
+======================
+
+RECmd.exe -f "C:\forensics\cleaned_hives\NTUSER.DAT" --bn ".\BatchExamples\UserActivity.reb" --csv "C:\forensics\output\Registry"
+
+RECmd.exe -f "C:\forensics\cleaned_hives\NTUSER.DAT" --bn ".\BatchExamples\BatchExampleUserAssist.reb" --csv "C:\forensics\output\Registry"
+
+RECmd.exe -f "C:\forensics\cleaned_hives\NTUSER.DAT" --bn ".\BatchExamples\AllRegExecutablesFoundOrRun.reb" --csv "C:\forensics\output\Registry"
+
+RECmd.exe -f "C:\forensics\cleaned_hives\NTUSER.DAT" --bn ".\BatchExamples\DFIRBatch.reb" --csv "C:\forensics\output\Registry"
+
+RECmd.exe -f "C:\forensics\cleaned_hives\NTUSER.DAT" --bn ".\BatchExamples\UserClassesASEPs.reb" --csv "C:\forensics\output\Registry"
+
+
+
+
+
+
+
+===============================
+
