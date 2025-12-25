@@ -2,9 +2,8 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Windows-blue?style=for-the-badge&logo=windows" alt="Platform">
-  <img src="https://img.shields.io/badge/Language-C++-00599C?style=for-the-badge&logo=cplusplus" alt="Language">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
   <img src="https://img.shields.io/badge/Version-1.0-orange?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge" alt="License">
 </p>
 
 <p align="center">
@@ -35,37 +34,27 @@
 
 ## 📖 About
 
-**MalScanPrompt** is a lightweight, interactive Windows malware analysis tool designed for security researchers, incident responders, and malware analysts. It provides real-time detection of:
+**MalScanPrompt** is a lightweight, interactive Windows malware analysis tool designed for security researchers, incident responders, and malware analysts. It provides real-time detection capabilities for identifying malicious activity on Windows systems.
 
-- 🔴 **Code Injection** - Detect injected code in process memory (RWX regions, unbacked executable memory, shellcode signatures)
-- 🔴 **Process Anomalies** - Identify suspicious process counts, parent-child relationship violations
-- 🔴 **DLL Hijacking** - Find potential DLL hijacking attempts
-- 🔴 **Unusual Locations** - Detect processes running from Temp/AppData folders
-
-## ✨ Features
+### Key Detection Capabilities
 
 | Feature | Description |
 |---------|-------------|
-| 🔍 **Memory Scanning** | Scans process memory for RWX regions, PE headers, shellcode patterns |
-| 🌳 **Process Tree** | Visualize process hierarchy with timestamps |
-| 🔐 **Mutex Enumeration** | List named/unnamed mutexes (useful for malware identification) |
-| ⚡ **Timeout Control** | Configurable timeouts to handle hung processes |
-| 🎨 **Colored Output** | Easy-to-read color-coded results |
-| ⌨️ **Abort Support** | Press ESC/Q to abort long-running scans |
+| 🔴 **Code Injection** | Detect injected code in process memory (RWX regions, unbacked executable memory, shellcode signatures) |
+| 🔴 **Process Anomalies** | Identify suspicious process counts, parent-child relationship violations |
+| 🔴 **DLL Hijacking** | Find potential DLL hijacking attempts |
+| 🔴 **Unusual Locations** | Detect processes running from Temp/AppData folders |
+
+## ✨ Features
+
+- 🔍 **Memory Scanning** - Scans process memory for RWX regions, PE headers, shellcode patterns
+- 🌳 **Process Tree** - Visualize process hierarchy with timestamps
+- 🔐 **Mutex Enumeration** - List named/unnamed mutexes (useful for malware identification)
+- ⚡ **Timeout Control** - Configurable timeouts to handle hung processes
+- 🎨 **Colored Output** - Easy-to-read color-coded results
+- ⌨️ **Abort Support** - Press ESC/Q to abort long-running scans
 
 ## 🚀 Quick Start
-
-### Building
-
-```bash
-# Using Visual Studio Developer Command Prompt
-cl /O2 /W3 MalScanPrompt.cpp /link psapi.lib ntdll.lib
-
-# Using MinGW
-g++ -O2 MalScanPrompt.cpp -o MalScanPrompt.exe -lpsapi -lntdll
-```
-
-### Running
 
 ```bash
 # Run as Administrator for full access
@@ -145,7 +134,7 @@ MalScanPrompt> list-tree
 
 ## 🔍 Detection Signatures
 
-MalScanPrompt detects the following suspicious patterns:
+MalScanPrompt detects the following suspicious patterns in memory:
 
 | Signature | Description | Severity |
 |-----------|-------------|----------|
@@ -160,20 +149,7 @@ MalScanPrompt detects the following suspicious patterns:
 | `90 90 90 90 90` | NOP Sled | 🟡 Warning |
 | `48 31 C9` | xor rcx,rcx (shellcode) | 🟡 Warning |
 
-### Adding Custom Signatures
-
-Edit the `g_Signatures` array in the source code:
-
-```c
-BYTE_SIGNATURE g_Signatures[] = {
-    // Add your custom patterns here:
-    { {0xAA, 0xBB, 0xCC, 0xDD}, 4, "My custom pattern", TRUE },
-    // ...
-    { {0}, 0, NULL, FALSE }  // End marker - DO NOT REMOVE
-};
-```
-
-## 📸 Screenshots
+## 📸 Sample Output
 
 ### System-Wide Injection Scan
 ```
@@ -214,6 +190,16 @@ Scanning process "notepad.exe" pid = 1234
        +-- lsass.exe (912, 2024-01-15 10:30:07)
 ```
 
+### DLL Hijacking Check
+```
+=== DLL Hijacking Check ===
+
+  Scanning: chrome.exe (PID 5678)
+
+Checked 142 processes
+[+] No DLL hijacking detected
+```
+
 ## ⚠️ Requirements
 
 - **OS**: Windows 7/8/10/11 (x64 recommended)
@@ -222,7 +208,7 @@ Scanning process "notepad.exe" pid = 1234
 
 ## 🛡️ Disclaimer
 
-This tool is intended for **legitimate security research, incident response, and educational purposes only**. Always obtain proper authorization before scanning systems you do not own. The authors are not responsible for misuse of this tool.
+This tool is intended for **legitimate security research, incident response, and educational purposes only**. Always obtain proper authorization before scanning systems you do not own. The author is not responsible for misuse of this tool.
 
 ## 👨‍💻 Author
 
@@ -233,32 +219,14 @@ This tool is intended for **legitimate security research, incident response, and
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**Proprietary Software** - All rights reserved.
 
-## 🤝 Contributing
+This software is provided as a compiled binary. Unauthorized copying, modification, distribution, or reverse engineering is prohibited.
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 Changelog
-
-### v1.0 (2024)
-- Initial release
-- Code injection detection
-- Process anomaly detection
-- DLL hijacking detection
-- Mutex enumeration
-- Process tree visualization
-- Configurable timeouts
-- Abort support (ESC/Q)
+For licensing inquiries, please contact the author.
 
 ---
 
 <p align="center">
-  <b>⭐ Star this repository if you find it useful! ⭐</b>
+  <b>© 2025 Abhijit Mohanta. All Rights Reserved.</b>
 </p>
