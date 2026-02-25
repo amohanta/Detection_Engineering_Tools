@@ -28,19 +28,12 @@
 
 ---
 
-## Download
-
-Download the latest binary from the [Releases](https://github.com/AAbhijithMohanan/MalScanPrompt/releases) page.
-
-> **Note:** This is a closed-source tool. Only pre-compiled binaries are provided.
-
----
 
 ## Requirements
 
-- Windows 10/11 (64-bit)
+- Windows 10 
 - Administrator privileges (required for process inspection)
-- Optional: YARA binary for `yarascan` feature
+
 
 ---
 
