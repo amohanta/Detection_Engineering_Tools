@@ -1,232 +1,335 @@
-# MalScanPrompt
+# MalScanPrompt v2.1
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Platform-Windows-blue?style=for-the-badge&logo=windows" alt="Platform">
-  <img src="https://img.shields.io/badge/Version-1.0-orange?style=for-the-badge" alt="Version">
-  <img src="https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge" alt="License">
+  <img src="images/malscanprompt.png" alt="MalScanPrompt Screenshot" width="800">
 </p>
 
-<p align="center">
-  <b>Windows Malware Analysis & Detection Tool</b><br>
-  A command-line tool for detecting code injection, process anomalies, and DLL hijacking
-</p>
+## Windows Malware Analysis & Detection Tool
+
+**MalScanPrompt** is a powerful command-line tool for malware analysts, incident responders, and security researchers. It provides comprehensive process inspection, code injection detection, mutex hunting, YARA scanning, and system anomaly detection capabilities.
+
+### Author
+
+**Abhijit Mohanta**
+- Author of *"Malware Analysis and Detection Engineering"*
+- Author of *"Preventing Ransomware"*
 
 ---
 
+## Features
+
+- 🔍 **Process Enumeration** - List processes, DLLs, handles, mutexes, and named pipes
+- 💉 **Injection Detection** - Scan for code injection (RWX memory, shellcode signatures)
+- 🎯 **Mutex Hunting** - Hunt malware by mutex patterns with wildcard support
+- 🦠 **YARA Scanning** - Scan running processes with YARA rules
+- ⚠️ **Anomaly Detection** - Detect suspicious process counts, parent-child relationships, DLL hijacking
+- 🌳 **Process Tree** - Visualize process hierarchy
+- 💾 **Memory Dumping** - Dump suspicious memory regions for analysis
+
+---
+
+## Download
+
+Download the latest binary from the [Releases](https://github.com/AAbhijithMohanan/MalScanPrompt/releases) page.
+
+> **Note:** This is a closed-source tool. Only pre-compiled binaries are provided.
+
+---
+
+## Requirements
+
+- Windows 10/11 (64-bit)
+- Administrator privileges (required for process inspection)
+- Optional: YARA binary for `yarascan` feature
+
+---
+
+## Quick Start
+
+1. Download `MalScanPrompt.exe`
+2. Run as Administrator
+3. Type `help` to see all commands
+
 ```
-  +========================================================================+
-  |                                                                        |
-  |  ##   ##   ####   ##       #####   #####   ####   ##   ##              |
-  |  ### ###  ##  ## ##      ##      ##      ##  ##  ###  ##               |
-  |  ## # ##  ###### ##       ####   ##      ######  ## # ##               |
-  |  ##   ##  ##  ## ##          ##  ##      ##  ##  ##  ###               |
-  |  ##   ##  ##  ## ###### #####    #####  ##  ##  ##   ##                |
-  |                                                                        |
-  |  #####  #####    ####   ##   ##  #####  ######                         |
-  |  ##  ## ##  ##  ##  ##  ### ###  ##  ##   ##                           |
-  |  #####  #####   ##  ##  ## # ##  #####    ##                           |
-  |  ##     ##  ##  ##  ##  ##   ##  ##       ##                           |
-  |  ##     ##   ##  ####   ##   ##  ##       ##                           |
-  |                                                                        |
-  |                    MalScanPrompt v1.0                                  |
-  +========================================================================+
-```
-
-## 📖 About
-
-**MalScanPrompt** is a lightweight, interactive Windows malware analysis tool designed for security researchers, incident responders, and malware analysts. It provides real-time detection capabilities for identifying malicious activity on Windows systems.
-
-### Key Detection Capabilities
-
-| Feature | Description |
-|---------|-------------|
-| 🔴 **Code Injection** | Detect injected code in process memory (RWX regions, unbacked executable memory, shellcode signatures) |
-| 🔴 **Process Anomalies** | Identify suspicious process counts, parent-child relationship violations |
-| 🔴 **DLL Hijacking** | Find potential DLL hijacking attempts |
-| 🔴 **Unusual Locations** | Detect processes running from Temp/AppData folders |
-
-## ✨ Features
-
-- 🔍 **Memory Scanning** - Scans process memory for RWX regions, PE headers, shellcode patterns
-- 🌳 **Process Tree** - Visualize process hierarchy with timestamps
-- 🔐 **Mutex Enumeration** - List named/unnamed mutexes (useful for malware identification)
-- ⚡ **Timeout Control** - Configurable timeouts to handle hung processes
-- 🎨 **Colored Output** - Easy-to-read color-coded results
-- ⌨️ **Abort Support** - Press ESC/Q to abort long-running scans
-
-## 🚀 Quick Start
-
-```bash
-# Run as Administrator for full access
-MalScanPrompt.exe
+MalScanPrompt> help
 ```
 
-## 📋 Commands
+---
 
-### Process Listing
+## Commands Reference
+
+### Process Commands
 
 | Command | Description |
 |---------|-------------|
 | `list-process` | List all running processes |
-| `list-tree` | Show process tree hierarchy |
-| `list-process-v` | Detailed process information |
-| `list-dll <pid>` | List DLLs loaded by a process |
-| `list-mutex <pid>` | List mutex handles for a process |
+| `list-tree` | Display process tree hierarchy |
+| `list-process-v` | Detailed process listing with memory info |
+| `list-dll <PID>` | List DLLs loaded by a process |
 
-### Code Injection Scanning
+**Example:**
+```
+MalScanPrompt> list-process
+MalScanPrompt> list-dll 8144
+```
+
+---
+
+### Handle & Object Commands
 
 | Command | Description |
 |---------|-------------|
-| `process-inject <pid> [-pt N] [-rt N]` | Scan a single process for injection |
-| `system-inject [-pt N] [-rt N]` | Scan ALL processes system-wide |
-| `dump-mem <pid> <addr>` | Dump memory region to file |
+| `list_handles [PID]` | List all handles (system-wide or per process) |
+| `list_mutex [PID]` | List all mutexes (system-wide or per process) |
+| `list_named_pipes [PID]` | List named pipes (system-wide or per process) |
 
-### Process Anomaly Detection
+**Example:**
+```
+MalScanPrompt> list_mutex
+MalScanPrompt> list_mutex 8144
+MalScanPrompt> list_named_pipes
+```
+
+---
+
+### Malware Hunting
+
+#### Mutex Hunting
+
+Hunt for malware based on known mutex patterns.
 
 | Command | Description |
 |---------|-------------|
-| `detect-all` | Run all anomaly checks |
-| `check-count` | Check critical process counts (lsass, csrss, services) |
-| `check-parent` | Check parent-child relationships (svchost → services.exe) |
-| `check-location` | Find processes in Temp/AppData folders |
-| `check-DLL-hijack` | Detect potential DLL hijacking |
+| `hunt_by_mutex <pattern>` | Hunt by single mutex pattern |
+| `hunt_by_mutex -f <file>` | Hunt using patterns from file |
 
-### Options
+**Single Pattern Examples:**
+```
+MalScanPrompt> hunt_by_mutex Remcos
+MalScanPrompt> hunt_by_mutex Rmc*
+MalScanPrompt> hunt_by_mutex *Emotet*
+```
 
-| Option | Description |
-|--------|-------------|
-| `-pt N` | Process timeout in seconds (default: 5) |
-| `-rt N` | Region timeout in seconds (default: 2) |
+**Pattern File Example:**
+```
+MalScanPrompt> hunt_by_mutex -f malware_mutex.txt
+```
 
-### Controls
+**Pattern File Format (`malware_mutex.txt`):**
+```
+# Malware Mutex Patterns
+# Format: MalwareName->MutexPattern
+
+RemcosRAT->Rmc*
+RemcosRAT->Remcos_Mutex*
+Emotet->PEM*
+AgentTesla->*AgentTesla*
+NjRAT->njq8*
+DarkComet->DC_MUTEX*
+Quasar->QSR_MUTEX*
+AsyncRAT->AsyncMutex*
+Cobalt->YOURWAT*
+```
+
+**Wildcard Support:**
+| Wildcard | Meaning |
+|----------|---------|
+| `*` | Match any characters (zero or more) |
+| `?` | Match single character |
+| No wildcard | Substring match (contains) |
+
+---
+
+#### YARA Scanning
+
+Scan all running processes with YARA rules.
+
+```
+MalScanPrompt> yarascan
+```
+
+The tool will prompt for:
+1. **YARA binary path** (e.g., `C:\tools\yara64.exe`)
+2. **YARA rules folder** (e.g., `C:\rules\`)
+
+The tool automatically finds all `.yar` and `.yara` files in the specified folder.
+
+**Example Output:**
+```
+=== YARA PROCESS SCANNER ===
+
+Enter YARA binary path: C:\tools\yara64.exe
+Enter YARA rules folder: C:\rules
+
+[*] Found 3 YARA rule file(s)
+    - C:\rules\malware.yar
+    - C:\rules\ransomware.yar
+    - C:\rules\trojans.yar
+
+[*] Scanning processes...
+
+[!] DETECTED: PID 8144 (suspicious.exe) - Rule: Remcos_RAT
+
+=== YARA SCAN RESULTS ===
+
+[DETECTION] PID: 8144 | Process: suspicious.exe
+  Rule File: malware.yar
+  Matched:   Remcos_RAT
+
+[*] Total detections: 1
+```
+
+---
+
+### Injection Detection
+
+| Command | Description |
+|---------|-------------|
+| `scan-inject <PID>` | Scan single process for injection |
+| `scan-inject-systemwide` | Scan ALL processes for injection |
+| `dump-mem <PID> <addr>` | Dump memory region |
+
+**Example:**
+```
+MalScanPrompt> scan-inject 8144
+MalScanPrompt> scan-inject-systemwide
+MalScanPrompt> dump-mem 8144 0x7FF612340000
+```
+
+**Detection Signatures:**
+- PE Header (MZ)
+- x86/x64 Function Prologue
+- Shellcode GetEIP (call $+5)
+- Metasploit shikata_ga_nai
+- PEB access patterns
+- Cobalt Strike beacon
+- NOP sleds
+
+---
+
+### Anomaly Detection
+
+| Command | Description |
+|---------|-------------|
+| `list_suspicious_process_all` | Run all anomaly checks |
+| `check_susp_ProcCount` | Check for duplicate system processes |
+| `check_susp_ParentChildRelation` | Check svchost parent relationships |
+| `check_susp_TempAppdata` | Find processes running from Temp/AppData |
+| `check_susp_DLLHijack` | Detect potential DLL hijacking |
+
+**Example:**
+```
+MalScanPrompt> list_suspicious_process_all
+```
+
+**Checks Performed:**
+- Multiple instances of `lsass.exe`, `services.exe`, `csrss.exe`
+- `svchost.exe` with wrong parent process
+- Executables running from `%TEMP%` or `%APPDATA%`
+- DLLs loaded from non-standard locations shadowing system DLLs
+
+---
+
+## Usage Examples
+
+### Scenario 1: Quick Malware Hunt
+```
+MalScanPrompt> hunt_by_mutex Remcos
+MalScanPrompt> hunt_by_mutex Emotet
+MalScanPrompt> hunt_by_mutex Cobalt
+```
+
+### Scenario 2: Comprehensive Scan
+```
+MalScanPrompt> list_suspicious_process_all
+MalScanPrompt> scan-inject-systemwide
+MalScanPrompt> yarascan
+```
+
+### Scenario 3: Investigate Specific Process
+```
+MalScanPrompt> list_mutex 8144
+MalScanPrompt> list_handles 8144
+MalScanPrompt> list-dll 8144
+MalScanPrompt> scan-inject 8144
+```
+
+### Scenario 4: Hunt with Pattern File
+```
+MalScanPrompt> hunt_by_mutex -f C:\patterns\rat_mutexes.txt
+```
+
+---
+
+## Keyboard Shortcuts
 
 | Key | Action |
 |-----|--------|
-| `ESC` / `Q` | Abort current scan |
-| `exit` | Exit program |
+| `ESC` | Abort running scan |
+| `Q` | Abort running scan |
+| `Ctrl+C` | Abort running scan |
 
-## 💡 Usage Examples
+---
 
-### Scan All Processes for Code Injection
-```
-MalScanPrompt> system-inject -pt 5 -rt 2
-```
+## Command-Line Mode
 
-### Scan Specific Process
-```
-MalScanPrompt> process-inject 1234 -pt 10
-```
+Run commands directly from command prompt:
 
-### Dump Suspicious Memory Region
-```
-MalScanPrompt> dump-mem 1234 0x7FF00000
+```batch
+MalScanPrompt.exe list-process
+MalScanPrompt.exe scan-inject 8144
+MalScanPrompt.exe hunt_by_mutex Remcos
+MalScanPrompt.exe yarascan
 ```
 
-### Run All Anomaly Checks
-```
-MalScanPrompt> detect-all
-```
+---
 
-### View Process Tree
-```
-MalScanPrompt> list-tree
-```
+## Sample Mutex Patterns
 
-## 🔍 Detection Signatures
+Here are some known malware mutex patterns for hunting:
 
-MalScanPrompt detects the following suspicious patterns in memory:
+| Malware | Mutex Pattern |
+|---------|---------------|
+| Remcos RAT | `Rmc*`, `Remcos_Mutex*` |
+| Emotet | `PEM*`, `Global\M*` |
+| Agent Tesla | `*AgentTesla*` |
+| NjRAT | `njq8*` |
+| DarkComet | `DC_MUTEX*` |
+| Quasar RAT | `QSR_MUTEX*` |
+| AsyncRAT | `AsyncMutex*` |
+| NetWire | `NetWire*` |
+| Poison Ivy | `)!VoqA.I4` |
+| Gh0st RAT | `Gh0st*` |
 
-| Signature | Description | Severity |
-|-----------|-------------|----------|
-| `4D 5A` | PE Header (MZ) | 🔴 Critical |
-| `55 8B EC` | x86 Function Prologue | 🔴 Critical |
-| `55 48 8B EC` | x64 Function Prologue | 🔴 Critical |
-| `E8 00 00 00 00` | Shellcode GetEIP (call $+5) | 🔴 Critical |
-| `FC E8` | Metasploit shikata_ga_nai | 🔴 Critical |
-| `64 A1 30 00 00 00` | PEB Access x86 (fs:[0x30]) | 🔴 Critical |
-| `65 48 8B 04 25 60` | PEB Access x64 (gs:[0x60]) | 🔴 Critical |
-| `4D 5A 41 52 55 48` | Cobalt Strike Beacon | 🔴 Critical |
-| `90 90 90 90 90` | NOP Sled | 🟡 Warning |
-| `48 31 C9` | xor rcx,rcx (shellcode) | 🟡 Warning |
+---
 
-## 📸 Sample Output
+## Notes
 
-### System-Wide Injection Scan
-```
-+============================================+
-|    System-Wide Code Injection Scanner      |
-+============================================+
-Timeouts: 5 sec/process, 2 sec/region
-Press ESC or Q to abort
+- Run as **Administrator** for full functionality
+- Some processes (protected/system) cannot be accessed
+- YARA scanning requires external YARA binary
+- Press `ESC` or `Q` to abort long-running scans
 
-Scanning process "notepad.exe" pid = 1234
+---
 
-  *** HIGHLY SUSPICIOUS ***
-    Memory Address = 0x00007FF6A1230000
-    Permissions = RWX
-    Region Size = 64.00 KB (65536 bytes)
-    Type = Private
-    Reason = Private-Commit RWX region
-    Signature = PE Header (MZ)
-    [Use 'dump-mem 1234 0x00007FF6A1230000' to dump]
+## License
 
-    HEX                                              | ASCII
-    ------------------------------------------------ | ----------------
-    4d 5a 90 00 03 00 00 00 04 00 00 00 ff ff 00 00 | MZ..............
-    b8 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00 | ........@.......
-```
+This software is provided as-is for security research and malware analysis purposes. Use responsibly and only on systems you have permission to analyze.
 
-### Process Tree View
-```
-=== Process Tree ===
+---
 
- [System] (4, 2024-01-15 10:30:00)
-  |-- smss.exe (456, 2024-01-15 10:30:01)
-  |-- csrss.exe (567, 2024-01-15 10:30:02)
-  +-- wininit.exe (678, 2024-01-15 10:30:03)
-       |-- services.exe (789, 2024-01-15 10:30:04)
-       |    |-- svchost.exe (890, 2024-01-15 10:30:05)
-       |    +-- svchost.exe (901, 2024-01-15 10:30:06)
-       +-- lsass.exe (912, 2024-01-15 10:30:07)
-```
+## Disclaimer
 
-### DLL Hijacking Check
-```
-=== DLL Hijacking Check ===
+This tool is intended for legitimate security research, incident response, and malware analysis. The author is not responsible for any misuse of this software. Always obtain proper authorization before analyzing systems.
 
-  Scanning: chrome.exe (PID 5678)
+---
 
-Checked 142 processes
-[+] No DLL hijacking detected
-```
+## Contact
 
-## ⚠️ Requirements
-
-- **OS**: Windows 7/8/10/11 (x64 recommended)
-- **Privileges**: Administrator (for full process access)
-- **Dependencies**: None (standalone executable)
-
-## 🛡️ Disclaimer
-
-This tool is intended for **legitimate security research, incident response, and educational purposes only**. Always obtain proper authorization before scanning systems you do not own. The author is not responsible for misuse of this tool.
-
-## 👨‍💻 Author
-
-**Abhijit Mohanta**
-
-- 📚 Author of *"Malware Analysis and Detection Engineering"* (Apress)
-- 📚 Author of *"Preventing Ransomware"* (Packt)
-
-## 📄 License
-
-**Proprietary Software** - All rights reserved.
-
-This software is provided as a compiled binary. Unauthorized copying, modification, distribution, or reverse engineering is prohibited.
-
-For licensing inquiries, please contact the author.
+For bug reports, feature requests, or questions, please open an issue on GitHub.
 
 ---
 
 <p align="center">
-  <b>© 2025 Abhijit Mohanta. All Rights Reserved.</b>
+  <b>Happy Hunting! 🎯</b>
 </p>
