@@ -115,14 +115,9 @@ MalScanPrompt> hunt_by_mutex -f malware_mutex.txt
 # Format: MalwareName->MutexPattern
 
 RemcosRAT->Rmc*
-RemcosRAT->Remcos_Mutex*
-Emotet->PEM*
-AgentTesla->*AgentTesla*
-NjRAT->njq8*
-DarkComet->DC_MUTEX*
-Quasar->QSR_MUTEX*
-AsyncRAT->AsyncMutex*
-Cobalt->YOURWAT*
+Babuk_Ransom->babuk_*
+BoratRAT->BoratRatMutex*
+
 ```
 
 **Wildcard Support:**
