@@ -193,11 +193,7 @@ MalScanPrompt> dump-mem 8144 0x7FF612340000
 **Detection Signatures:**
 - PE Header (MZ)
 - x86/x64 Function Prologue
-- Shellcode GetEIP (call $+5)
-- Metasploit shikata_ga_nai
-- PEB access patterns
-- Cobalt Strike beacon
-- NOP sleds
+- etc
 
 ---
 
@@ -228,9 +224,9 @@ MalScanPrompt> list_suspicious_process_all
 
 ### Scenario 1: Quick Malware Hunt
 ```
-MalScanPrompt> hunt_by_mutex Remcos
-MalScanPrompt> hunt_by_mutex Emotet
-MalScanPrompt> hunt_by_mutex Cobalt
+MalScanPrompt> hunt_by_mutex Rmc*   
+(Remcos RAT has a mutex that starts with Rmc) 
+
 ```
 
 ### Scenario 2: Comprehensive Scan
@@ -284,16 +280,8 @@ Here are some known malware mutex patterns for hunting:
 
 | Malware | Mutex Pattern |
 |---------|---------------|
-| Remcos RAT | `Rmc*`, `Remcos_Mutex*` |
-| Emotet | `PEM*`, `Global\M*` |
-| Agent Tesla | `*AgentTesla*` |
-| NjRAT | `njq8*` |
-| DarkComet | `DC_MUTEX*` |
-| Quasar RAT | `QSR_MUTEX*` |
-| AsyncRAT | `AsyncMutex*` |
-| NetWire | `NetWire*` |
-| Poison Ivy | `)!VoqA.I4` |
-| Gh0st RAT | `Gh0st*` |
+| Remcos RAT | `Rmc*`, ` |
+
 
 ---
 
