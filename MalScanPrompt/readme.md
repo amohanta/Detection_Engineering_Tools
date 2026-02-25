@@ -33,6 +33,7 @@
 
 - Windows 10 
 - Administrator privileges (required for process inspection)
+- Requires yara binaries and rules for yara scanning
 
 
 ---
