@@ -4,6 +4,8 @@
   <img src="images/malscanprompt.png" alt="MalScanPrompt Screenshot" width="800">
 </p>
 
+video : https://youtu.be/8fIaqVBRYPU
+
 ## Windows Malware Analysis & Detection Tool
 
 **MalScanPrompt** is a powerful command-line tool for malware analysts, incident responders, and security researchers. It can be a considered as a user mode LIVE MEMORY FORENSICS TOOL. It provides comprehensive process inspection, code injection detection, mutex hunting, YARA scanning, and system anomaly detection capabilities.
