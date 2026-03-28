@@ -3,7 +3,7 @@
 
 ![Registry Artifact Viewer](image1.jpeg)
 
-> A pure **Win32 / VC++** Windows forensics tool that reads, decodes, and displays **18 registry artifacts + 4 SRUM tables** from a live system — with no external dependencies, no MFC, no installers.
+LIVE Windows forensics tool that reads, decodes, and displays **18 registry artifacts + 4 SRUM tables** from a live system — with no external dependencies, no MFC, no installers.
 
 ---
 
