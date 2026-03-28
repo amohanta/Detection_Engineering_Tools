@@ -3,8 +3,7 @@
 
 ![Registry Artifact Viewer](image1.jpeg)
 
-LIVE Windows forensics tool that reads, decodes, and displays **18 registry artifacts + 4 SRUM tables** from a live system — with no external dependencies, no MFC, no installers.
-
+LIVE Windows forensics tool that reads, decodes, and displays **18 registry artifacts + 4 SRUM tables** from a live system 
 ---
 
 ## Features
@@ -101,25 +100,7 @@ LIVE Windows forensics tool that reads, decodes, and displays **18 registry arti
 
 ---
 
-## Build Instructions
 
-**Requirements:**
-- Visual Studio 2022 (Community, Professional, or Enterprise)
-- Workload: **Desktop development with C++**
-- No MFC required — pure Win32
-
-**Steps:**
-```
-1. Clone the repository
-2. Open  RegistryArtifactViewer.sln  in Visual Studio 2022
-3. Select  Release | x64
-4. Build → Build Solution  (Ctrl+Shift+B)
-5. Output: bin\x64\Release\RegistryArtifactViewer.exe
-```
-
-No additional files or DLLs needed. The executable is self-contained.
-
----
 
 ## Usage
 
