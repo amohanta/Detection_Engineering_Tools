@@ -12,22 +12,6 @@ FsForensics is a standalone Windows forensic tool that reads NTFS artifacts **di
 
 ![FsForensics Screenshot](screenshot.png)
 
----
-
-## Key Features
-
-- **Zero dependencies** — single portable EXE, no install, no DLLs, no runtime required
-- **Live system analysis** — reads directly from `\\.\C:` raw volume handle
-- **Full path resolution** — walks the MFT parent chain to reconstruct complete file paths for every artifact
-- **Per-tab auto-scan** — click a tab and it scans that artifact automatically
-- **Time filter** — filter all artifacts by date/time range before or after scanning
-- **Keyword filter** — real-time search across filename, path, action, and extra fields
-- **Action / Source column filters** — dropdown filter by operation type or artifact source
-- **Export** — CSV and HTML export for current tab; bulk export all tabs to separate CSV files
-- **Virtual ListView** — handles millions of rows without slowdown (O(1) rendering)
-- **Background scanning** — non-blocking UI with progress indicator and Stop button
-
----
 
 ## Artifacts Parsed
 
