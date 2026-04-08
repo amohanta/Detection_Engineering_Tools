@@ -1,8 +1,13 @@
-# Hanuman Decompiler Plugin for x64dbg
-
-<p align="left">
-  <img width="177" height="154" alt="Hanuman" src="https://github.com/user-attachments/assets/c63f1188-8f8b-4662-bb00-806288ae65b6" />
-</p>
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/c63f1188-8f8b-4662-bb00-806288ae65b6" width="120"/>
+    </td>
+    <td>
+      <h1>Hanuman Decompiler Plugin for x64dbg</h1>
+    </td>
+  </tr>
+</table>
 
 ![Hanuman](hanuman.png)
 
