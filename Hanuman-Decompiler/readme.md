@@ -1,6 +1,8 @@
+# Hanuman Decompiler Plugin for x64dbg
 
-#Hanuman Decompiler Plugin for x64dbg <img width="177" height="154" alt="image" src="https://github.com/user-attachments/assets/c63f1188-8f8b-4662-bb00-806288ae65b6" />
-
+<p align="left">
+  <img width="177" height="154" alt="Hanuman" src="https://github.com/user-attachments/assets/c63f1188-8f8b-4662-bb00-806288ae65b6" />
+</p>
 
 ![Hanuman](hanuman.png)
 
@@ -10,11 +12,11 @@
 
 ## ✨ Features
 
-- ⚡ Live Decompilation during debugging
-- 🧠 Simplified view of assembly instructions
-- 🔍 Helps speed up malware analysis & reverse engineering
-- 🪶 Lightweight and easy to integrate
-- 🧩 Works seamlessly with x32 & x64 versions of x64dbg
+* ⚡ Live decompilation during debugging
+* 🧠 Simplified view of assembly instructions
+* 🔍 Speeds up malware analysis and reverse engineering
+* 🪶 Lightweight and easy to integrate
+* 🧩 Works seamlessly with both x32 and x64 versions of x64dbg
 
 ---
 
@@ -24,18 +26,23 @@
 
 2. Copy the plugin files to your x64dbg plugin directory:
 
-<x64dbg_folder>\release\<x32/x64>\plugins\
+```
+<x64dbg_folder>\release\<x32\x64>\plugins\
+```
 
-3. Place the following files accordingly:
+3. Place the files as follows:
 
+```
 Hanuman.dp32  
 Hanuman.dp64  
 api_defs.txt  
+```
 
 ---
 
 ## 📁 Example Directory Structure
 
+```
 x64dbg/
 └── release/
     ├── x32/
@@ -46,6 +53,7 @@ x64dbg/
         └── plugins/
             ├── Hanuman.dp64
             └── api_defs.txt
+```
 
 ---
 
@@ -54,39 +62,43 @@ x64dbg/
 1. Launch x64dbg
 2. Load your target binary
 3. Start debugging
-4. Go to plugin's menu choose hanuman-decompiler
+4. Navigate to: **Plugins → Hanuman Decompiler**
 
 ---
 
 ## 🧠 Why Hanuman?
 
-Reverse engineering often requires mentally converting assembly into higher-level logic.  
-Hanuman simplifies this process, allowing you to:
+Reverse engineering often requires mentally converting assembly into higher-level logic.
+Hanuman simplifies this process by allowing you to:
 
-- Focus on logic instead of instructions
-- Speed up malware analysis
-- Improve productivity during debugging sessions
+* Focus on logic instead of low-level instructions
+* Speed up malware analysis
+* Improve productivity during debugging sessions
 
 ---
 
 ## ⚠️ Notes
 
-- Ensure correct architecture placement:
-  - dp32 → x32 folder  
-  - dp64 → x64 folder  
-- api_defs.txt must be present for proper API interpretation
+* Ensure correct architecture placement:
 
+  * `dp32` → x32 folder
+  * `dp64` → x64 folder
+* `api_defs.txt` must be present for proper API interpretation
 
+---
 
 ## 🚧 Work To Be Done
 
-- More code pattern recognitions  
-- Adding recognition to multiple coding convention  
+* Improve code pattern recognition
+* Add support for multiple coding conventions
 
-
-
+---
 
 ## 🔥 Inspiration
-Ghidra, Snowman
 
-Built for reverse engineers, malware analysts, and detection engineers who want faster insight during debugging.
+* Ghidra
+* Snowman
+
+---
+
+Built for reverse engineers, malware analysts, and detection engineers who want faster insights during debugging.
