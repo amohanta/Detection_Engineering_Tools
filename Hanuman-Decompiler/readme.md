@@ -17,8 +17,8 @@
 
 ## ✨ Features
 
-* ⚡ Live decompilation during debugging and Debugger and Decompiler a synchronized
-* 🔍 Speeds up malware analysis and reverse engineering
+⚡ synachronized with x64dbg Debugger, hence you would see the decompiled version of decugged code parallely 
+🔍 Speeds up malware analysis and reverse engineering
 
 ---
 
