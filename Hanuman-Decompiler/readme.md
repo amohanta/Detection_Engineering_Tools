@@ -17,11 +17,8 @@
 
 ## ✨ Features
 
-* ⚡ Live decompilation during debugging
-* 🧠 Simplified view of assembly instructions
+* ⚡ Live decompilation during debugging and Debugger and Decompiler a synchronized
 * 🔍 Speeds up malware analysis and reverse engineering
-* 🪶 Lightweight and easy to integrate
-* 🧩 Works seamlessly with both x32 and x64 versions of x64dbg
 
 ---
 
