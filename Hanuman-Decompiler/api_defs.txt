@@ -233,3 +233,18 @@ IsDebuggerPresent|BOOL|void
 CheckRemoteDebuggerPresent|BOOL|HANDLE hProcess|PBOOL pbDebuggerPresent
 OutputDebugStringW|void|LPCWSTR lpOutputString
 OutputDebugStringA|void|LPCSTR lpOutputString
+
+# Type aliases for better parameter display
+HINTERNET|HANDLE
+INTERNET_PORT|WORD
+
+# Internet functions with correct parameter names
+InternetCloseHandle|BOOL|HINTERNET hInternet
+InternetOpenA|HINTERNET|LPCSTR lpszAgent|DWORD dwAccessType|LPCSTR lpszProxy|LPCSTR lpszProxyBypass|DWORD dwFlags
+InternetOpenW|HINTERNET|LPCWSTR lpszAgent|DWORD dwAccessType|LPCWSTR lpszProxy|LPCWSTR lpszProxyBypass|DWORD dwFlags
+InternetConnectA|HINTERNET|HINTERNET hInternet|LPCSTR lpszServerName|INTERNET_PORT nServerPort|LPCSTR lpszUserName|LPCSTR lpszPassword|DWORD dwService|DWORD dwFlags|DWORD_PTR dwContext
+InternetConnectW|HINTERNET|HINTERNET hInternet|LPCWSTR lpszServerName|INTERNET_PORT nServerPort|LPCWSTR lpszUserName|LPCWSTR lpszPassword|DWORD dwService|DWORD dwFlags|DWORD_PTR dwContext
+HttpOpenRequestA|HINTERNET|HINTERNET hConnect|LPCSTR lpszVerb|LPCSTR lpszObjectName|LPCSTR lpszVersion|LPCSTR lpszReferrer|LPCSTR* lplpszAcceptTypes|DWORD dwFlags|DWORD_PTR dwContext
+HttpOpenRequestW|HINTERNET|HINTERNET hConnect|LPCWSTR lpszVerb|LPCWSTR lpszObjectName|LPCWSTR lpszVersion|LPCWSTR lpszReferrer|LPCWSTR* lplpszAcceptTypes|DWORD dwFlags|DWORD_PTR dwContext
+HttpSendRequestA|BOOL|HINTERNET hRequest|LPCSTR lpszHeaders|DWORD dwHeadersLength|LPVOID lpOptional|DWORD dwOptionalLength
+HttpSendRequestW|BOOL|HINTERNET hRequest|LPCWSTR lpszHeaders|DWORD dwHeadersLength|LPVOID lpOptional|DWORD dwOptionalLength
