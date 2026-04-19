@@ -1,0 +1,361 @@
+# Abhi-Decompiler API Definitions
+# Supports TWO formats - both can be mixed in this file:
+#
+# Format 1 - Pipe separated (compact):
+#   CreateProcessA|BOOL|LPCSTR lpApplicationName|LPSTR lpCommandLine|...
+#
+# Format 2 - MSDN paste (paste directly from docs.microsoft.com):
+#   BOOL CreateProcessA(
+#     [in, optional]  LPCSTR  lpApplicationName,
+#     [in, out]       LPSTR   lpCommandLine,
+#     ...
+#   );
+#
+# Lines starting with # are comments.
+# Place this file next to Abhi-Decompiler.dp64 / .dp32
+
+# ── Registry (existing) ──────────────────────────────────────
+RegCreateKeyExW|LSTATUS|HKEY hKey|LPCWSTR lpSubKey|DWORD Reserved|LPWSTR lpClass|DWORD dwOptions|REGSAM samDesired|LPSECURITY_ATTRIBUTES lpSecurityAttributes|PHKEY phkResult|LPDWORD lpdwDisposition
+RegCreateKeyExA|LSTATUS|HKEY hKey|LPCSTR lpSubKey|DWORD Reserved|LPSTR lpClass|DWORD dwOptions|REGSAM samDesired|LPSECURITY_ATTRIBUTES lpSecurityAttributes|PHKEY phkResult|LPDWORD lpdwDisposition
+RegOpenKeyExW|LSTATUS|HKEY hKey|LPCWSTR lpSubKey|DWORD ulOptions|REGSAM samDesired|PHKEY phkResult
+RegOpenKeyExA|LSTATUS|HKEY hKey|LPCSTR lpSubKey|DWORD ulOptions|REGSAM samDesired|PHKEY phkResult
+RegSetValueExW|LSTATUS|HKEY hKey|LPCWSTR lpValueName|DWORD Reserved|DWORD dwType|const BYTE* lpData|DWORD cbData
+RegSetValueExA|LSTATUS|HKEY hKey|LPCSTR lpValueName|DWORD Reserved|DWORD dwType|const BYTE* lpData|DWORD cbData
+RegQueryValueExW|LSTATUS|HKEY hKey|LPCWSTR lpValueName|LPDWORD lpReserved|LPDWORD lpType|LPBYTE lpData|LPDWORD lpcbData
+RegQueryValueExA|LSTATUS|HKEY hKey|LPCSTR lpValueName|LPDWORD lpReserved|LPDWORD lpType|LPBYTE lpData|LPDWORD lpcbData
+RegCloseKey|LSTATUS|HKEY hKey
+RegDeleteKeyW|LSTATUS|HKEY hKey|LPCWSTR lpSubKey
+RegDeleteKeyA|LSTATUS|HKEY hKey|LPCSTR lpSubKey
+RegDeleteValueW|LSTATUS|HKEY hKey|LPCWSTR lpValueName
+RegDeleteValueA|LSTATUS|HKEY hKey|LPCSTR lpValueName
+RegEnumKeyExW|LSTATUS|HKEY hKey|DWORD dwIndex|LPWSTR lpName|LPDWORD lpcchName|LPDWORD lpReserved|LPWSTR lpClass|LPDWORD lpcchClass|PFILETIME lpftLastWriteTime
+RegEnumValueW|LSTATUS|HKEY hKey|DWORD dwIndex|LPWSTR lpValueName|LPDWORD lpcchValueName|LPDWORD lpReserved|LPDWORD lpType|LPBYTE lpData|LPDWORD lpcbData
+RegFlushKey|LSTATUS|HKEY hKey
+RegLoadKeyW|LSTATUS|HKEY hKey|LPCWSTR lpSubKey|LPCWSTR lpFile
+RegLoadKeyA|LSTATUS|HKEY hKey|LPCSTR lpSubKey|LPCSTR lpFile
+RegUnLoadKeyW|LSTATUS|HKEY hKey|LPCWSTR lpSubKey
+RegUnLoadKeyA|LSTATUS|HKEY hKey|LPCSTR lpSubKey
+RegSaveKeyW|LSTATUS|HKEY hKey|LPCWSTR lpFile|LPSECURITY_ATTRIBUTES lpSecurityAttributes
+RegSaveKeyA|LSTATUS|HKEY hKey|LPCSTR lpFile|LPSECURITY_ATTRIBUTES lpSecurityAttributes
+RegRestoreKeyW|LSTATUS|HKEY hKey|LPCWSTR lpFile|DWORD dwFlags
+RegRestoreKeyA|LSTATUS|HKEY hKey|LPCSTR lpFile|DWORD dwFlags
+RegCreateKeyW|LSTATUS|HKEY hKey|LPCWSTR lpSubKey|PHKEY phkResult
+RegCreateKeyA|LSTATUS|HKEY hKey|LPCSTR lpSubKey|PHKEY phkResult
+RegOpenKeyW|LSTATUS|HKEY hKey|LPCWSTR lpSubKey|PHKEY phkResult
+RegOpenKeyA|LSTATUS|HKEY hKey|LPCSTR lpSubKey|PHKEY phkResult
+RegQueryInfoKeyW|LSTATUS|HKEY hKey|LPWSTR lpClass|LPDWORD lpcchClass|LPDWORD lpReserved|LPDWORD lpcSubKeys|LPDWORD lpcbMaxSubKeyLen|LPDWORD lpcbMaxClassLen|LPDWORD lpcValues|LPDWORD lpcbMaxValueNameLen|LPDWORD lpcbMaxValueLen|LPDWORD lpcbSecurityDescriptor|PFILETIME lpftLastWriteTime
+RegQueryInfoKeyA|LSTATUS|HKEY hKey|LPSTR lpClass|LPDWORD lpcchClass|LPDWORD lpReserved|LPDWORD lpcSubKeys|LPDWORD lpcbMaxSubKeyLen|LPDWORD lpcbMaxClassLen|LPDWORD lpcValues|LPDWORD lpcbMaxValueNameLen|LPDWORD lpcbMaxValueLen|LPDWORD lpcbSecurityDescriptor|PFILETIME lpftLastWriteTime
+RegCopyTreeW|LSTATUS|HKEY hKeySrc|LPCWSTR lpSubKey|HKEY hKeyDest
+RegCopyTreeA|LSTATUS|HKEY hKeySrc|LPCSTR lpSubKey|HKEY hKeyDest
+
+# ── Anti-Debug / Anti-Analysis ────────────────────────────────
+IsDebuggerPresent|BOOL|void
+CheckRemoteDebuggerPresent|BOOL|HANDLE hProcess|PBOOL pbDebuggerPresent
+NtQueryInformationProcess|NTSTATUS|HANDLE ProcessHandle|PROCESSINFOCLASS ProcessInformationClass|PVOID ProcessInformation|ULONG ProcessInformationLength|PULONG ReturnLength
+NtSetInformationProcess|NTSTATUS|HANDLE ProcessHandle|PROCESSINFOCLASS ProcessInformationClass|PVOID ProcessInformation|ULONG ProcessInformationLength
+NtQuerySystemInformation|NTSTATUS|SYSTEM_INFORMATION_CLASS SystemInformationClass|PVOID SystemInformation|ULONG SystemInformationLength|PULONG ReturnLength
+NtClose|NTSTATUS|HANDLE Handle
+NtDuplicateObject|NTSTATUS|HANDLE SourceProcessHandle|HANDLE SourceHandle|HANDLE TargetProcessHandle|PHANDLE TargetHandle|ACCESS_MASK DesiredAccess|ULONG HandleAttributes|ULONG Options
+NtReadVirtualMemory|NTSTATUS|HANDLE ProcessHandle|PVOID BaseAddress|PVOID Buffer|SIZE_T NumberOfBytesToRead|PSIZE_T NumberOfBytesRead
+NtWriteVirtualMemory|NTSTATUS|HANDLE ProcessHandle|PVOID BaseAddress|PVOID Buffer|SIZE_T NumberOfBytesToWrite|PSIZE_T NumberOfBytesWritten
+NtProtectVirtualMemory|NTSTATUS|HANDLE ProcessHandle|PVOID* BaseAddress|PSIZE_T RegionSize|ULONG NewProtect|PULONG OldProtect
+NtAllocateVirtualMemory|NTSTATUS|HANDLE ProcessHandle|PVOID* BaseAddress|ULONG_PTR ZeroBits|PSIZE_T RegionSize|ULONG AllocationType|ULONG Protect
+NtFreeVirtualMemory|NTSTATUS|HANDLE ProcessHandle|PVOID* BaseAddress|PSIZE_T RegionSize|ULONG FreeType
+NtCreateThreadEx|NTSTATUS|PHANDLE ThreadHandle|ACCESS_MASK DesiredAccess|POBJECT_ATTRIBUTES ObjectAttributes|HANDLE ProcessHandle|PVOID StartRoutine|PVOID Argument|ULONG CreateFlags|SIZE_T ZeroBits|SIZE_T StackSize|SIZE_T MaximumStackSize|PPS_ATTRIBUTE_LIST AttributeList
+NtTerminateProcess|NTSTATUS|HANDLE ProcessHandle|NTSTATUS ExitStatus
+NtSuspendThread|NTSTATUS|HANDLE ThreadHandle|PULONG PreviousSuspendCount
+NtResumeThread|NTSTATUS|HANDLE ThreadHandle|PULONG PreviousSuspendCount
+NtGetContextThread|NTSTATUS|HANDLE ThreadHandle|PCONTEXT ThreadContext
+NtSetContextThread|NTSTATUS|HANDLE ThreadHandle|PCONTEXT ThreadContext
+NtOpenProcess|NTSTATUS|PHANDLE ProcessHandle|ACCESS_MASK DesiredAccess|POBJECT_ATTRIBUTES ObjectAttributes|PCLIENT_ID ClientId
+NtOpenThread|NTSTATUS|PHANDLE ThreadHandle|ACCESS_MASK DesiredAccess|POBJECT_ATTRIBUTES ObjectAttributes|PCLIENT_ID ClientId
+NtOpenKey|NTSTATUS|PHANDLE KeyHandle|ACCESS_MASK DesiredAccess|POBJECT_ATTRIBUTES ObjectAttributes
+NtOpenKeyEx|NTSTATUS|PHANDLE KeyHandle|ACCESS_MASK DesiredAccess|POBJECT_ATTRIBUTES ObjectAttributes|ULONG OpenOptions
+NtCreateKey|NTSTATUS|PHANDLE KeyHandle|ACCESS_MASK DesiredAccess|POBJECT_ATTRIBUTES ObjectAttributes|ULONG TitleIndex|PUNICODE_STRING Class|ULONG CreateOptions|PULONG Disposition
+NtDeleteKey|NTSTATUS|HANDLE KeyHandle
+NtDeleteValueKey|NTSTATUS|HANDLE KeyHandle|PUNICODE_STRING ValueName
+NtSetValueKey|NTSTATUS|HANDLE KeyHandle|PUNICODE_STRING ValueName|ULONG TitleIndex|ULONG Type|PVOID Data|ULONG DataSize
+NtQueryValueKey|NTSTATUS|HANDLE KeyHandle|PUNICODE_STRING ValueName|KEY_VALUE_INFORMATION_CLASS KeyValueInformationClass|PVOID KeyValueInformation|ULONG Length|PULONG ResultLength
+NtEnumerateKey|NTSTATUS|HANDLE KeyHandle|ULONG Index|KEY_INFORMATION_CLASS KeyInformationClass|PVOID KeyInformation|ULONG Length|PULONG ResultLength
+NtEnumerateValueKey|NTSTATUS|HANDLE KeyHandle|ULONG Index|KEY_VALUE_INFORMATION_CLASS KeyValueInformationClass|PVOID KeyValueInformation|ULONG Length|PULONG ResultLength
+RtlAdjustPrivilege|NTSTATUS|ULONG Privilege|BOOLEAN Enable|BOOLEAN CurrentThread|PBOOLEAN Enabled
+RtlSetProcessIsCritical|NTSTATUS|BOOLEAN NewValue|PBOOLEAN OldValue|BOOLEAN NeedBreak
+NtRaiseHardError|NTSTATUS|NTSTATUS ErrorStatus|ULONG NumberOfParameters|ULONG UnicodeStringParameterMask|PULONG_PTR Parameters|HARDERROR_RESPONSE_OPTION ResponseOption|PHARDERROR_RESPONSE Response
+OutputDebugStringW|void|LPCWSTR lpOutputString
+OutputDebugStringA|void|LPCSTR lpOutputString
+GetThreadContext|BOOL|HANDLE hThread|LPCONTEXT lpContext
+SetThreadContext|BOOL|HANDLE hThread|const CONTEXT* lpContext
+SuspendThread|DWORD|HANDLE hThread
+ResumeThread|DWORD|HANDLE hThread
+DebugActiveProcess|BOOL|DWORD dwProcessId
+DebugActiveProcessStop|BOOL|DWORD dwProcessId
+WaitForDebugEvent|BOOL|LPDEBUG_EVENT lpDebugEvent|DWORD dwMilliseconds
+ContinueDebugEvent|BOOL|DWORD dwProcessId|DWORD dwThreadId|DWORD dwContinueStatus
+GetProcessHeap|HANDLE|void
+HeapCreate|HANDLE|DWORD flOptions|SIZE_T dwInitialSize|SIZE_T dwMaximumSize
+HeapDestroy|BOOL|HANDLE hHeap
+HeapReAlloc|LPVOID|HANDLE hHeap|DWORD dwFlags|LPVOID lpMem|SIZE_T dwBytes
+
+# ── Process Injection / Hollowing ────────────────────────────
+CreateRemoteThread|HANDLE|HANDLE hProcess|LPSECURITY_ATTRIBUTES lpThreadAttributes|SIZE_T dwStackSize|LPTHREAD_START_ROUTINE lpStartAddress|LPVOID lpParameter|DWORD dwCreationFlags|LPDWORD lpThreadId
+CreateRemoteThreadEx|HANDLE|HANDLE hProcess|LPSECURITY_ATTRIBUTES lpThreadAttributes|SIZE_T dwStackSize|LPTHREAD_START_ROUTINE lpStartAddress|LPVOID lpParameter|DWORD dwCreationFlags|LPPROC_THREAD_ATTRIBUTE_LIST lpAttributeList|LPDWORD lpThreadId
+QueueUserAPC|DWORD|PAPCFUNC pfnAPC|HANDLE hThread|ULONG_PTR dwData
+SetThreadContext|BOOL|HANDLE hThread|const CONTEXT* lpContext
+GetThreadContext|BOOL|HANDLE hThread|LPCONTEXT lpContext
+ResumeThread|DWORD|HANDLE hThread
+SuspendThread|DWORD|HANDLE hThread
+NtUnmapViewOfSection|NTSTATUS|HANDLE ProcessHandle|PVOID BaseAddress
+ZwUnmapViewOfSection|NTSTATUS|HANDLE ProcessHandle|PVOID BaseAddress
+CreateToolhelp32Snapshot|HANDLE|DWORD dwFlags|DWORD th32ProcessID
+Process32FirstW|BOOL|HANDLE hSnapshot|LPPROCESSENTRY32W lppe
+Process32FirstA|BOOL|HANDLE hSnapshot|LPPROCESSENTRY32A lppe
+Process32NextW|BOOL|HANDLE hSnapshot|LPPROCESSENTRY32W lppe
+Process32NextA|BOOL|HANDLE hSnapshot|LPPROCESSENTRY32A lppe
+Thread32First|BOOL|HANDLE hSnapshot|LPTHREADENTRY32 lpte
+Thread32Next|BOOL|HANDLE hSnapshot|LPTHREADENTRY32 lpte
+Module32FirstW|BOOL|HANDLE hSnapshot|LPMODULEENTRY32W lpme
+Module32FirstA|BOOL|HANDLE hSnapshot|LPMODULEENTRY32A lpme
+Module32NextW|BOOL|HANDLE hSnapshot|LPMODULEENTRY32W lpme
+Module32NextA|BOOL|HANDLE hSnapshot|LPMODULEENTRY32A lpme
+CreateRemoteThread|HANDLE|HANDLE hProcess|LPSECURITY_ATTRIBUTES lpThreadAttributes|SIZE_T dwStackSize|LPTHREAD_START_ROUTINE lpStartAddress|LPVOID lpParameter|DWORD dwCreationFlags|LPDWORD lpThreadId
+
+# ── Persistence (Scheduled Tasks / WMI) ──────────────────────
+ITaskScheduler_CreateTask|HRESULT|ITaskScheduler* pScheduler|LPCWSTR pwszTaskName|ITask** ppTask
+ITask_SetParameters|HRESULT|ITask* pTask|LPCWSTR pwszParameters
+ITask_SetWorkingDirectory|HRESULT|ITask* pTask|LPCWSTR pwszWorkingDirectory
+ITask_SetApplicationName|HRESULT|ITask* pTask|LPCWSTR pwszApplicationName
+ITask_SetPriority|HRESULT|ITask* pTask|DWORD dwPriority
+ITask_SetMaxRunTime|HRESULT|ITask* pTask|DWORD dwMaxRunTimeMS
+ITask_SetFlags|HRESULT|ITask* pTask|DWORD dwFlags
+ITask_SetAccountInformation|HRESULT|ITask* pTask|LPCWSTR pwszAccountName|LPCWSTR pwszPassword
+ITask_Save|HRESULT|ITask* pTask
+CoCreateInstance|HRESULT|REFCLSID rclsid|LPUNKNOWN pUnkOuter|DWORD dwClsContext|REFIID riid|LPVOID* ppv
+CoInitializeEx|HRESULT|LPVOID pvReserved|DWORD dwCoInit
+CoUninitialize|void|void
+CoInitializeSecurity|HRESULT|PSECURITY_DESCRIPTOR pSecDesc|LONG cAuthSvc|SOLE_AUTHENTICATION_SERVICE* asAuthSvc|void* pReserved1|DWORD dwAuthnLevel|DWORD dwImpLevel|void* pAuthList|DWORD dwCapabilities|void* pReserved3
+CoSetProxyBlanket|HRESULT|IUnknown* pProxy|DWORD dwAuthnSvc|DWORD dwAuthzSvc|OLECHAR* pServerPrincName|DWORD dwAuthnLevel|DWORD dwImpLevel|RPC_AUTH_IDENTITY_HANDLE pAuthInfo|DWORD dwCapabilities
+
+# ── Network C2 / Downloaders ─────────────────────────────────
+WinHttpOpen|HINTERNET|LPCWSTR pszAgentW|DWORD dwAccessType|LPCWSTR pszProxyW|LPCWSTR pszProxyBypassW|DWORD dwFlags
+WinHttpOpenRequest|HINTERNET|HINTERNET hConnect|LPCWSTR pwszVerb|LPCWSTR pwszObjectName|LPCWSTR pwszVersion|LPCWSTR pwszReferrer|LPCWSTR* ppwszAcceptTypes|DWORD dwFlags
+WinHttpSendRequest|BOOL|HINTERNET hRequest|LPCWSTR lpszHeaders|DWORD dwHeadersLength|LPVOID lpOptional|DWORD dwOptionalLength|DWORD dwTotalLength|DWORD_PTR dwContext
+WinHttpReceiveResponse|BOOL|HINTERNET hRequest|LPVOID lpReserved
+WinHttpReadData|BOOL|HINTERNET hRequest|LPVOID lpBuffer|DWORD dwNumberOfBytesToRead|LPDWORD lpdwNumberOfBytesRead
+WinHttpWriteData|BOOL|HINTERNET hRequest|LPCVOID lpBuffer|DWORD dwNumberOfBytesToWrite|LPDWORD lpdwNumberOfBytesWritten
+WinHttpCloseHandle|BOOL|HINTERNET hInternet
+WinHttpConnect|HINTERNET|HINTERNET hSession|LPCWSTR pswzServerName|INTERNET_PORT nServerPort|DWORD dwReserved
+WinHttpSetOption|BOOL|HINTERNET hInternet|DWORD dwOption|LPVOID lpBuffer|DWORD dwBufferLength
+WinHttpQueryHeaders|BOOL|HINTERNET hRequest|DWORD dwInfoLevel|LPCWSTR pwszName|LPVOID lpBuffer|LPDWORD lpdwBufferLength|LPDWORD lpdwIndex
+WinHttpQueryDataAvailable|BOOL|HINTERNET hRequest|LPDWORD lpdwNumberOfBytesAvailable
+URLDownloadToCacheFileW|HRESULT|LPUNKNOWN pCaller|LPCWSTR szURL|LPWSTR szCacheFile|DWORD dwBufSize|DWORD dwReserved|LPBINDSTATUSCALLBACK lpfnCB
+URLDownloadToCacheFileA|HRESULT|LPUNKNOWN pCaller|LPCSTR szURL|LPSTR szCacheFile|DWORD dwBufSize|DWORD dwReserved|LPBINDSTATUSCALLBACK lpfnCB
+DeleteUrlCacheEntry|BOOL|LPCWSTR lpszUrlName
+FindFirstUrlCacheEntryW|HANDLE|LPCWSTR lpszUrlSearchPattern|LPINTERNET_CACHE_ENTRY_INFOW lpFirstCacheEntryInfo|LPDWORD lpdwFirstCacheEntryInfoBufferSize
+FindFirstUrlCacheEntryA|HANDLE|LPCSTR lpszUrlSearchPattern|LPINTERNET_CACHE_ENTRY_INFOA lpFirstCacheEntryInfo|LPDWORD lpdwFirstCacheEntryInfoBufferSize
+FindNextUrlCacheEntryW|BOOL|HANDLE hEnumHandle|LPINTERNET_CACHE_ENTRY_INFOW lpNextCacheEntryInfo|LPDWORD lpdwNextCacheEntryInfoBufferSize
+FindNextUrlCacheEntryA|BOOL|HANDLE hEnumHandle|LPINTERNET_CACHE_ENTRY_INFOA lpNextCacheEntryInfo|LPDWORD lpdwNextCacheEntryInfoBufferSize
+
+# ── DNS / Network Info ───────────────────────────────────────
+gethostbyname|struct hostent*|const char* name
+gethostbyaddr|struct hostent*|const void* addr|socklen_t len|int type
+getaddrinfo|int|const char* nodename|const char* servname|const struct addrinfo* hints|struct addrinfo** res
+freeaddrinfo|void|struct addrinfo* ai
+getnameinfo|int|const struct sockaddr* sa|socklen_t salen|char* host|size_t hostlen|char* serv|size_t servlen|int flags
+inet_addr|unsigned long|const char* cp
+inet_ntoa|char*|struct in_addr in
+WSAStartup|int|WORD wVersionRequired|LPWSADATA lpWSAData
+WSACleanup|int|void
+WSAGetLastError|int|void
+WSASocketA|SOCKET|int af|int type|int protocol|LPWSAPROTOCOL_INFOA lpProtocolInfo|GROUP g|DWORD dwFlags
+WSASocketW|SOCKET|int af|int type|int protocol|LPWSAPROTOCOL_INFOW lpProtocolInfo|GROUP g|DWORD dwFlags
+WSAIoctl|int|SOCKET s|DWORD dwIoControlCode|LPVOID lpvInBuffer|DWORD cbInBuffer|LPVOID lpvOutBuffer|DWORD cbOutBuffer|LPDWORD lpcbBytesReturned|LPWSAOVERLAPPED lpOverlapped|LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine
+GetAdaptersInfo|DWORD|PIP_ADAPTER_INFO pAdapterInfo|PULONG pOutBufLen
+GetNetworkParams|DWORD|PFIXED_INFO pFixedInfo|PULONG pOutBufLen
+
+# ── Anti-VM / Sandbox Detection ───────────────────────────────
+GetTickCount|DWORD|void
+GetTickCount64|ULONGLONG|void
+QueryPerformanceCounter|BOOL|LARGE_INTEGER* lpPerformanceCount
+rdtsc|unsigned __int64|void
+GetSystemFirmwareTable|UINT|DWORD FirmwareTableProviderSignature|DWORD FirmwareTableID|PVOID pFirmwareTableBuffer|DWORD BufferSize
+GetSystemInfo|void|LPSYSTEM_INFO lpSystemInfo
+GetNativeSystemInfo|void|LPSYSTEM_INFO lpSystemInfo
+IsWow64Process|BOOL|HANDLE hProcess|PBOOL Wow64Process
+GetLogicalDriveStringsW|DWORD|DWORD nBufferLength|LPWSTR lpBuffer
+GetLogicalDriveStringsA|DWORD|DWORD nBufferLength|LPSTR lpBuffer
+GetDriveTypeW|UINT|LPCWSTR lpRootPathName
+GetDriveTypeA|UINT|LPCSTR lpRootPathName
+GetDiskFreeSpaceExW|BOOL|LPCWSTR lpDirectoryName|PULARGE_INTEGER lpFreeBytesAvailable|PULARGE_INTEGER lpTotalNumberOfBytes|PULARGE_INTEGER lpTotalNumberOfFreeBytes
+GetDiskFreeSpaceExA|BOOL|LPCSTR lpDirectoryName|PULARGE_INTEGER lpFreeBytesAvailable|PULARGE_INTEGER lpTotalNumberOfBytes|PULARGE_INTEGER lpTotalNumberOfFreeBytes
+GetKeyboardType|int|int nTypeFlag
+GetUserDefaultLangID|LANGID|void
+GetSystemDefaultLangID|LANGID|void
+GetSystemMetrics|int|int nIndex
+EnumDisplayDevicesW|BOOL|LPCWSTR lpDevice|DWORD iDevNum|PDISPLAY_DEVICEW lpDisplayDevice|DWORD dwFlags
+EnumDisplayDevicesA|BOOL|LPCSTR lpDevice|DWORD iDevNum|PDISPLAY_DEVICEA lpDisplayDevice|DWORD dwFlags
+GetComputerNameW|BOOL|LPWSTR lpBuffer|LPDWORD nSize
+GetComputerNameA|BOOL|LPSTR lpBuffer|LPDWORD nSize
+GetComputerNameExW|BOOL|COMPUTER_NAME_FORMAT NameType|LPWSTR lpBuffer|LPDWORD nSize
+GetComputerNameExA|BOOL|COMPUTER_NAME_FORMAT NameType|LPSTR lpBuffer|LPDWORD nSize
+GetUserNameW|BOOL|LPWSTR lpBuffer|LPDWORD pcbBuffer
+GetUserNameA|BOOL|LPSTR lpBuffer|LPDWORD pcbBuffer
+
+# ── Encryption / Compression ──────────────────────────────────
+CryptAcquireContextW|BOOL|HCRYPTPROV* phProv|LPCWSTR szContainer|LPCWSTR szProvider|DWORD dwProvType|DWORD dwFlags
+CryptAcquireContextA|BOOL|HCRYPTPROV* phProv|LPCSTR szContainer|LPCSTR szProvider|DWORD dwProvType|DWORD dwFlags
+CryptReleaseContext|BOOL|HCRYPTPROV hProv|DWORD dwFlags
+CryptGenRandom|BOOL|HCRYPTPROV hProv|DWORD dwLen|BYTE* pbBuffer
+CryptCreateHash|BOOL|HCRYPTPROV hProv|ALG_ID Algid|HCRYPTKEY hKey|DWORD dwFlags|HCRYPTHASH* phHash
+CryptHashData|BOOL|HCRYPTHASH hHash|const BYTE* pbData|DWORD dwDataLen|DWORD dwFlags
+CryptGetHashParam|BOOL|HCRYPTHASH hHash|DWORD dwParam|BYTE* pbData|DWORD* pdwDataLen|DWORD dwFlags
+CryptDestroyHash|BOOL|HCRYPTHASH hHash
+CryptEncrypt|BOOL|HCRYPTKEY hKey|HCRYPTHASH hHash|BOOL Final|DWORD dwFlags|BYTE* pbData|DWORD* pdwDataLen|DWORD dwBufLen
+CryptDecrypt|BOOL|HCRYPTKEY hKey|HCRYPTHASH hHash|BOOL Final|DWORD dwFlags|BYTE* pbData|DWORD* pdwDataLen
+CryptDeriveKey|BOOL|HCRYPTPROV hProv|ALG_ID Algid|HCRYPTHASH hBaseData|DWORD dwFlags|HCRYPTKEY* phKey
+CryptGenKey|BOOL|HCRYPTPROV hProv|ALG_ID Algid|DWORD dwFlags|HCRYPTKEY* phKey
+CryptDestroyKey|BOOL|HCRYPTKEY hKey
+CryptExportKey|BOOL|HCRYPTKEY hKey|HCRYPTKEY hExpKey|DWORD dwBlobType|DWORD dwFlags|BYTE* pbData|DWORD* pdwDataLen
+CryptImportKey|BOOL|HCRYPTPROV hProv|const BYTE* pbData|DWORD dwDataLen|HCRYPTKEY hPubKey|DWORD dwFlags|HCRYPTKEY* phKey
+RtlCompressBuffer|NTSTATUS|USHORT CompressionFormat|PUCHAR UncompressedBuffer|ULONG UncompressedSize|PUCHAR CompressedBuffer|ULONG CompressedSize|ULONG UncompressedChunkSize|PULONG FinalCompressedSize|PVOID WorkSpace
+RtlDecompressBuffer|NTSTATUS|USHORT CompressionFormat|PUCHAR UncompressedBuffer|ULONG UncompressedSize|PUCHAR CompressedBuffer|ULONG CompressedSize|PULONG FinalUncompressedSize
+RtlGetCompressionWorkSpaceSize|NTSTATUS|USHORT CompressionFormat|PULONG WorkSpaceSize|PULONG FragmentWorkSpaceSize
+
+# ── Keylogging / Input ───────────────────────────────────────
+GetAsyncKeyState|SHORT|int vKey
+GetKeyState|SHORT|int nVirtKey
+GetForegroundWindow|HWND|void
+GetWindowTextW|int|HWND hWnd|LPWSTR lpString|int nMaxCount
+GetWindowTextA|int|HWND hWnd|LPSTR lpString|int nMaxCount
+GetWindowThreadProcessId|DWORD|HWND hWnd|LPDWORD lpdwProcessId
+AttachThreadInput|BOOL|DWORD idAttach|DWORD idAttachTo|BOOL fAttach
+SetWindowsHookExW|HHOOK|int idHook|HOOKPROC lpfn|HINSTANCE hmod|DWORD dwThreadId
+SetWindowsHookExA|HHOOK|int idHook|HOOKPROC lpfn|HINSTANCE hmod|DWORD dwThreadId
+UnhookWindowsHookEx|BOOL|HHOOK hhk
+CallNextHookEx|LRESULT|HHOOK hhk|int nCode|WPARAM wParam|LPARAM lParam
+GetMessageW|BOOL|LPMSG lpMsg|HWND hWnd|UINT wMsgFilterMin|UINT wMsgFilterMax
+GetMessageA|BOOL|LPMSG lpMsg|HWND hWnd|UINT wMsgFilterMin|UINT wMsgFilterMax
+PeekMessageW|BOOL|LPMSG lpMsg|HWND hWnd|UINT wMsgFilterMin|UINT wMsgFilterMax|UINT wRemoveMsg
+PeekMessageA|BOOL|LPMSG lpMsg|HWND hWnd|UINT wMsgFilterMin|UINT wMsgFilterMax|UINT wRemoveMsg
+TranslateMessage|BOOL|const MSG* lpMsg
+DispatchMessageW|LRESULT|const MSG* lpMsg
+DispatchMessageA|LRESULT|const MSG* lpMsg
+RegisterRawInputDevices|BOOL|const RAWINPUTDEVICE* pRawInputDevices|UINT uiNumDevices|UINT cbSize
+GetRawInputData|UINT|HRAWINPUT hRawInput|UINT uiCommand|LPVOID pData|PUINT pcbSize|UINT cbSizeHeader
+
+# ── Screen Capture / Stealing ─────────────────────────────────
+CreateCompatibleDC|HDC|HDC hdc
+CreateCompatibleBitmap|HBITMAP|HDC hdc|int cx|int cy
+SelectObject|HGDIOBJ|HDC hdc|HGDIOBJ h
+BitBlt|BOOL|HDC hdcDest|int xDest|int yDest|int wDest|int hDest|HDC hdcSrc|int xSrc|int ySrc|DWORD rop
+StretchBlt|BOOL|HDC hdcDest|int xDest|int yDest|int wDest|int hDest|HDC hdcSrc|int xSrc|int ySrc|int wSrc|int hSrc|DWORD rop
+GetDIBits|int|HDC hdc|HBITMAP hbm|UINT start|UINT cLines|LPVOID lpvBits|LPBITMAPINFO lpbi|UINT usage
+CreateDIBSection|HBITMAP|HDC hdc|const BITMAPINFO* pbmi|UINT usage|void** ppvBits|HANDLE hSection|DWORD offset
+OpenClipboard|BOOL|HWND hWnd
+CloseClipboard|BOOL|void
+EmptyClipboard|BOOL|void
+SetClipboardData|HANDLE|UINT uFormat|HANDLE hMem
+GetClipboardData|HANDLE|UINT uFormat
+IsClipboardFormatAvailable|BOOL|UINT format
+
+# ── Self-Deletion / Anti-Forensics ───────────────────────────
+DeleteFileW|BOOL|LPCWSTR lpFileName
+DeleteFileA|BOOL|LPCSTR lpFileName
+MoveFileExW|BOOL|LPCWSTR lpExistingFileName|LPCWSTR lpNewFileName|DWORD dwFlags
+MoveFileExA|BOOL|LPCSTR lpExistingFileName|LPCSTR lpNewFileName|DWORD dwFlags
+CreateFileW|HANDLE|LPCWSTR lpFileName|DWORD dwDesiredAccess|DWORD dwShareMode|LPSECURITY_ATTRIBUTES lpSecurityAttributes|DWORD dwCreationDisposition|DWORD dwFlagsAndAttributes|HANDLE hTemplateFile
+CreateFileA|HANDLE|LPCSTR lpFileName|DWORD dwDesiredAccess|DWORD dwShareMode|LPSECURITY_ATTRIBUTES lpSecurityAttributes|DWORD dwCreationDisposition|DWORD dwFlagsAndAttributes|HANDLE hTemplateFile
+SetFileInformationByHandle|BOOL|HANDLE hFile|FILE_INFO_BY_HANDLE_CLASS FileInformationClass|LPVOID lpFileInformation|DWORD dwBufferSize
+SetFileAttributesW|BOOL|LPCWSTR lpFileName|DWORD dwFileAttributes
+SetFileAttributesA|BOOL|LPCSTR lpFileName|DWORD dwFileAttributes
+GetFileAttributesW|DWORD|LPCWSTR lpFileName
+GetFileAttributesA|DWORD|LPCSTR lpFileName
+SetFileTime|BOOL|HANDLE hFile|const FILETIME* lpCreationTime|const FILETIME* lpLastAccessTime|const FILETIME* lpLastWriteTime
+GetFileTime|BOOL|HANDLE hFile|LPFILETIME lpCreationTime|LPFILETIME lpLastAccessTime|LPFILETIME lpLastWriteTime
+NtDeleteFile|NTSTATUS|POBJECT_ATTRIBUTES ObjectAttributes
+RemoveDirectoryW|BOOL|LPCWSTR lpPathName
+RemoveDirectoryA|BOOL|LPCSTR lpPathName
+
+# ── Token Manipulation / Privilege Escalation ─────────────────
+OpenProcessToken|BOOL|HANDLE ProcessHandle|DWORD DesiredAccess|PHANDLE TokenHandle
+OpenThreadToken|BOOL|HANDLE ThreadHandle|DWORD DesiredAccess|BOOL OpenAsSelf|PHANDLE TokenHandle
+DuplicateTokenEx|BOOL|HANDLE hExistingToken|DWORD dwDesiredAccess|LPSECURITY_ATTRIBUTES lpTokenAttributes|SECURITY_IMPERSONATION_LEVEL ImpersonationLevel|TOKEN_TYPE TokenType|PHANDLE phNewToken
+DuplicateToken|BOOL|HANDLE ExistingToken|SECURITY_IMPERSONATION_LEVEL ImpersonationLevel|PHANDLE DuplicateToken
+SetThreadToken|BOOL|PHANDLE Thread|HANDLE Token
+ImpersonateLoggedOnUser|BOOL|HANDLE hToken
+RevertToSelf|BOOL|void
+LookupPrivilegeValueW|BOOL|LPCWSTR lpSystemName|LPCWSTR lpName|PLUID lpLuid
+LookupPrivilegeValueA|BOOL|LPCSTR lpSystemName|LPCSTR lpName|PLUID lpLuid
+AdjustTokenPrivileges|BOOL|HANDLE TokenHandle|BOOL DisableAllPrivileges|PTOKEN_PRIVILEGES NewState|DWORD BufferLength|PTOKEN_PRIVILEGES PreviousState|PDWORD ReturnLength
+GetTokenInformation|BOOL|HANDLE TokenHandle|TOKEN_INFORMATION_CLASS TokenInformationClass|LPVOID TokenInformation|DWORD TokenInformationLength|PDWORD ReturnLength
+SetTokenInformation|BOOL|HANDLE TokenHandle|TOKEN_INFORMATION_CLASS TokenInformationClass|LPVOID TokenInformation|DWORD TokenInformationLength
+CreateProcessAsUserW|BOOL|HANDLE hToken|LPCWSTR lpApplicationName|LPWSTR lpCommandLine|LPSECURITY_ATTRIBUTES lpProcessAttributes|LPSECURITY_ATTRIBUTES lpThreadAttributes|BOOL bInheritHandles|DWORD dwCreationFlags|LPVOID lpEnvironment|LPCWSTR lpCurrentDirectory|LPSTARTUPINFOW lpStartupInfo|LPPROCESS_INFORMATION lpProcessInformation
+CreateProcessAsUserA|BOOL|HANDLE hToken|LPCSTR lpApplicationName|LPSTR lpCommandLine|LPSECURITY_ATTRIBUTES lpProcessAttributes|LPSECURITY_ATTRIBUTES lpThreadAttributes|BOOL bInheritHandles|DWORD dwCreationFlags|LPVOID lpEnvironment|LPCSTR lpCurrentDirectory|LPSTARTUPINFOA lpStartupInfo|LPPROCESS_INFORMATION lpProcessInformation
+
+# ── Stealing / Credential Access ─────────────────────────────
+CredEnumerateW|BOOL|LPCWSTR TargetName|DWORD Flags|DWORD* Count|PCREDENTIALW** Credentials
+CredEnumerateA|BOOL|LPCSTR TargetName|DWORD Flags|DWORD* Count|PCREDENTIALA** Credentials
+CredReadW|BOOL|LPCWSTR TargetName|DWORD Type|DWORD Flags|PCREDENTIALW* Credential
+CredReadA|BOOL|LPCSTR TargetName|DWORD Type|DWORD Flags|PCREDENTIALA* Credential
+CredWriteW|BOOL|PCREDENTIALW Credential|DWORD Flags
+CredWriteA|BOOL|PCREDENTIALA Credential|DWORD Flags
+CredDeleteW|BOOL|LPCWSTR TargetName|DWORD Type|DWORD Flags
+CredDeleteA|BOOL|LPCSTR TargetName|DWORD Type|DWORD Flags
+CredFree|void|PVOID Buffer
+LsaRetrievePrivateData|NTSTATUS|LSA_HANDLE PolicyHandle|PLSA_UNICODE_STRING KeyName|PLSA_UNICODE_STRING* PrivateData
+LsaStorePrivateData|NTSTATUS|LSA_HANDLE PolicyHandle|PLSA_UNICODE_STRING KeyName|PLSA_UNICODE_STRING PrivateData
+LsaOpenPolicy|NTSTATUS|PLSA_UNICODE_STRING SystemName|PLSA_OBJECT_ATTRIBUTES ObjectAttributes|ACCESS_MASK DesiredAccess|PLSA_HANDLE PolicyHandle
+LsaClose|NTSTATUS|LSA_HANDLE ObjectHandle
+LsaNtStatusToWinError|ULONG|NTSTATUS Status
+
+# ── AMSI / ETW Bypass ────────────────────────────────────────
+AmsiInitialize|HRESULT|LPCWSTR appName|HAMSICONTEXT* amsiContext
+AmsiUninitialize|void|HAMSICONTEXT amsiContext
+AmsiScanBuffer|HRESULT|HAMSICONTEXT amsiContext|PVOID buffer|ULONG length|LPCWSTR contentName|HAMSISESSION amsiSession|AMSI_RESULT* result
+AmsiScanString|HRESULT|HAMSICONTEXT amsiContext|LPCWSTR string|LPCWSTR contentName|HAMSISESSION amsiSession|AMSI_RESULT* result
+AmsiOpenSession|HRESULT|HAMSICONTEXT amsiContext|HAMSISESSION* amsiSession
+AmsiCloseSession|void|HAMSISESSION amsiSession
+EtwEventWrite|ULONG|REGHANDLE RegHandle|PEVENT_DESCRIPTOR EventDescriptor|ULONG UserDataCount|PEVENT_DATA_DESCRIPTOR UserData
+EtwEventRegister|ULONG|LPCGUID ProviderId|PENABLECALLBACK EnableCallback|PVOID CallbackContext|PREGHANDLE RegHandle
+EtwEventUnregister|ULONG|REGHANDLE RegHandle
+NtRaiseHardError|NTSTATUS|NTSTATUS ErrorStatus|ULONG NumberOfParameters|ULONG UnicodeStringParameterMask|PULONG_PTR Parameters|HARDERROR_RESPONSE_OPTION ResponseOption|PHARDERROR_RESPONSE Response
+
+# ─── Shellcode / Dynamic API Resolution ──────────────────────
+GetProcAddress|FARPROC|HMODULE hModule|LPCSTR lpProcName
+LoadLibraryW|HMODULE|LPCWSTR lpLibFileName
+LoadLibraryA|HMODULE|LPCSTR lpLibFileName
+GetModuleHandleW|HMODULE|LPCWSTR lpModuleName
+GetModuleHandleA|HMODULE|LPCSTR lpModuleName
+LdrLoadDll|NTSTATUS|PWCHAR PathToFile|ULONG Flags|PUNICODE_STRING ModuleFileName|PHANDLE ModuleHandle
+LdrGetProcedureAddress|NTSTATUS|HMODULE Module|PANSI_STRING ProcedureName|ULONG Ordinal|PVOID* ProcedureAddress
+LdrUnloadDll|NTSTATUS|HMODULE Module
+RtlImageNtHeader|PIMAGE_NT_HEADERS|PVOID BaseAddress
+RtlImageDirectoryEntryToData|PVOID|PVOID Base|BOOLEAN MappedAsImage|USHORT Directory|PULONG Size
+
+# ── Miscellaneous Malware Techniques ──────────────────────────
+SetErrorMode|UINT|UINT uMode
+GetSystemDirectoryW|UINT|LPWSTR lpBuffer|UINT uSize
+GetSystemDirectoryA|UINT|LPSTR lpBuffer|UINT uSize
+GetWindowsDirectoryW|UINT|LPWSTR lpBuffer|UINT uSize
+GetWindowsDirectoryA|UINT|LPSTR lpBuffer|UINT uSize
+GetTempPathW|DWORD|DWORD nBufferLength|LPWSTR lpBuffer
+GetTempPathA|DWORD|DWORD nBufferLength|LPSTR lpBuffer
+GetTempFileNameW|UINT|LPCWSTR lpPathName|LPCWSTR lpPrefixString|UINT uUnique|LPWSTR lpTempFileName
+GetTempFileNameA|UINT|LPCSTR lpPathName|LPCSTR lpPrefixString|UINT uUnique|LPSTR lpTempFileName
+ExpandEnvironmentStringsW|DWORD|LPCWSTR lpSrc|LPWSTR lpDst|DWORD nSize
+ExpandEnvironmentStringsA|DWORD|LPCSTR lpSrc|LPSTR lpDst|DWORD nSize
+SearchPathW|DWORD|LPCWSTR lpPath|LPCWSTR lpFileName|LPCWSTR lpExtension|DWORD nBufferLength|LPWSTR lpBuffer|LPWSTR* lpFilePart
+SearchPathA|DWORD|LPCSTR lpPath|LPCSTR lpFileName|LPCSTR lpExtension|DWORD nBufferLength|LPSTR lpBuffer|LPSTR* lpFilePart
+GetShortPathNameW|DWORD|LPCWSTR lpszLongPath|LPWSTR lpszShortPath|DWORD cchBuffer
+GetShortPathNameA|DWORD|LPCSTR lpszLongPath|LPSTR lpszShortPath|DWORD cchBuffer
+GetLongPathNameW|DWORD|LPCWSTR lpszShortPath|LPWSTR lpszLongPath|DWORD cchBuffer
+GetLongPathNameA|DWORD|LPCSTR lpszShortPath|LPSTR lpszLongPath|DWORD cchBuffer
+
+# Type aliases for better parameter display
+HINTERNET|HANDLE
+INTERNET_PORT|WORD
+SC_HANDLE|HANDLE
+HCRYPTPROV|ULONG_PTR
+HCRYPTKEY|ULONG_PTR
+HCRYPTHASH|ULONG_PTR
+HAMSICONTEXT|PVOID
+HAMSISESSION|PVOID
