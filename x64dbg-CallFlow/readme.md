@@ -15,7 +15,7 @@ An x64dbg plugin that traces execution flow and turns it into a readable **call 
 - Traces from the current instruction, **stepping over API calls** and **stepping into user-code calls**, so the tree stays focused on *your* program's logic.
 - Resolves call targets, including **register / indirect calls** (e.g. `call esi` where a register holds a dynamically-loaded API pointer).
 - Records the **call-instruction address** for every node, so you can jump straight to the call site.
-- Writes output continuously, so a **crash still leaves a valid partial log**.
+
 
 ## Install
 
