@@ -3,7 +3,7 @@
 
 An x64dbg plugin that traces execution flow and turns it into a readable **call tree** — stepping *over* API calls and *into* your own code, then logging the result as an interactive HTML page and an SVG flowchart.
 
-> By **AMohanta** · closed-source · Windows (x32dbg / x64dbg)
+> By **AMohanta**
 
 ![Example CallFlow output](docs/example.svg)
 
