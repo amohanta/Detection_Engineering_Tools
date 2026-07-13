@@ -1,11 +1,10 @@
-
 # CallFlow
 
 An x64dbg plugin that traces execution flow and turns it into a readable **call tree** — stepping *over* API calls and *into* your own code, then logging the result as an interactive HTML page and an SVG flowchart.
 
-> By **AMohanta**
+> By **AMohanta** · closed-source · Windows (x32dbg / x64dbg)
 
-![Example CallFlow output](docs/example.svg)
+![Example CallFlow output](images/flow.png)
 
 *Example: a run starting at the entry point, showing `mycode_main` calling registry, file, and WinINet APIs. User-code calls are green, APIs are blue, and each row is prefixed with the address of the call instruction.*
 
